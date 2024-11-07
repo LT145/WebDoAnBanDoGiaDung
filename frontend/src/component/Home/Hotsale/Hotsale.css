@@ -1,0 +1,190 @@
+#hot_sale {
+    width: 1150px; 
+    margin: 0px auto;
+    margin-top: 11px;
+    background-color: #F29F41;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    position: relative;
+    padding: 20px;
+    box-sizing: border-box;
+    
+}
+
+#hot_sale .fire {
+    display: flex;
+    align-items: center;
+    color:white;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+#hot_sale .fire:hover{
+    color: red;
+}
+
+#hot_sale .fire .fa-fire {
+    font-size: 32px;
+    margin-right: 10px;
+}
+
+#hot_sale .body_box {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+#hot_sale .box {
+    width: 10%; 
+    min-height: 320px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    padding: 15px;
+    position: relative;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+}
+
+#hot_sale .box:hover {
+    transform: translateY(-5px);
+}
+
+#hot_sale .box .sale {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: red;
+    color: white;
+    padding: 4px 8px;
+    font-size: 12px;
+    font-weight: bold;
+    border-bottom-right-radius: 20px;
+    z-index: 1;
+}
+
+#hot_sale .box img {
+    width: auto;
+    max-height: 150px;
+    margin: auto; 
+    object-fit: contain;
+    border-radius: 5px;
+}
+
+
+#hot_sale .box .name {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    margin: 10px 0;
+    text-decoration: none;
+    text-align: center;
+}
+
+#hot_sale .box .money_sale {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+#hot_sale .box .money_sale .gia_1 {
+    font-size: 16px;
+    color: red;
+    font-weight: bold;
+}
+
+#hot_sale .box .money_sale .gia_2 {
+    font-size: 14px;
+    color: #888;
+    text-decoration: line-through;
+}
+
+#hot_sale .box .star {
+    text-align: center;
+    color: gold;
+    margin-bottom: 10px;
+}
+
+#hot_sale .box .buy {
+    display: block;
+    text-align: center;
+    background-color: #ff4500;
+    color: white;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+#hot_sale .box .buy:hover {
+    background-color: #e63;
+}
+
+#hot_sale .chevron {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px; 
+}
+
+#hot_sale .chevron .arrow {
+    font-size: 32px;
+    color: #333;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+#hot_sale .chevron .arrow:hover {
+    color: #ff4500;
+}
+
+.body_box {
+    overflow: hidden;
+    position: relative;
+    width: 96%;
+    margin-left: 2%;
+}
+
+.box_container {
+    display: flex;
+    transition: transform 0.5s ease; 
+}
+
+.box {
+    flex: 0 0 250px; 
+    margin: 0 7.5px;
+    box-sizing: border-box; 
+}
+
+.baner2 {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    gap: 10px;
+    width: 100%; 
+    max-width: 1200px; 
+    margin: 0 auto; 
+}
+
+.baner2 img {
+    width: 100%; 
+    max-width: calc(50% - 5px);
+    height: auto; 
+    border-radius: 8px; 
+}

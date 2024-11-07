@@ -1,0 +1,70 @@
+#footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #F29F41;
+    border-top: 1px solid #ddd;
+    text-align: left;
+    color: white;
+    min-width: 1150px;
+}
+
+.footer-section {
+    width: 1150px;
+    display: flex;
+    padding: 0 15px;
+    position: relative;
+    margin: 0px auto;
+    justify-content: space-between;
+}
+
+.footer-section h3 {
+    font-size: 18px;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.footer-section ul {
+    padding: 0;
+    margin: 20px 0 0 15px;
+    margin-bottom: 20px;
+}
+
+.footer-section ul li {
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: white;
+}
+.footer-section.right ul li {
+    display: inline-block;
+    margin-right: 10px;
+    font-size: 14px;
+}
+.social-icons {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    margin-left: 50px;
+  }
+  
+  .social-icons li {
+    margin-bottom: 15px; /* Khoảng cách giữa các dòng */
+  }
+  
+  .social-icons li a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    width: 100%; /* Đảm bảo liên kết chiếm toàn bộ chiều rộng */
+  }
+  
+  .social-icons li a img {
+    width: 50px; /* Kích thước hình ảnh */
+    height: 50px; /* Chiều cao hình ảnh */
+    margin-right: 10px; /* Khoảng cách giữa hình ảnh và text */
+  }
+  

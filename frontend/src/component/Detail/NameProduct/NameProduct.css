@@ -1,0 +1,29 @@
+#product {
+    display: flex;
+    position: relative;
+    left: 0;
+    width: 1150px;
+    gap: 20px;
+    min-width: 1150px;
+    margin: 0px auto;
+}
+
+
+/* Các phần tử trong product */
+#product .detail {
+    display: flex;
+    gap: 25px;
+    font-size: 15px;
+    margin-top: 5px;
+}
+
+#product .detail .compare a,
+#product .detail .star a,
+#product .detail .thongso a {
+    text-decoration: none;
+    color: black;
+}
+
+#product i {
+    color: #F29F41;
+}

@@ -1,0 +1,45 @@
+#baner {
+    width: 1150px; 
+    display: block;
+    margin: 0px auto;
+    margin-top: 11px;
+    min-width: 1150px;
+    justify-content: center;
+}
+
+#baner .img_baner {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+}
+
+#banner2 {
+    width: 1150px; /* Corrected width calculation */
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    gap: 10px;
+    margin: 0px auto;
+    margin-top: 11px;
+}
+
+#banner2 .img_banner2 {
+    width: calc(50% - 5px);
+    border-radius: 20px;
+}
+.banner3{
+    width: 1150px; 
+    display: block;
+    margin: -5px auto;
+    margin-top: 11px;
+}
+
+.banner3 h3{
+    margin-left: 5px;
+    font-size: 25px;
+}
+
+.banner3 img{
+    width: 100%;
+    max-width: 1150px;
+}

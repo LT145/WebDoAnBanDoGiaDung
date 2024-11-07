@@ -1,0 +1,67 @@
+[
+    {
+      "id": 1,
+      "imgSrc": "./img/aqua-88-kg.jpg",
+      "name": "Aqua 8.8 Kg AQW-FR88GT.BK",
+      "priceOld": "8.090.000 đ",
+      "priceNew": "5.190.000 đ",
+      "rating": 4.5
+    },
+    {
+      "id": 2,
+      "imgSrc": "./img/may-loc-nuoc-ro-nong-lanh.jpg",
+      "name": "Máy lọc nước RO nóng nguội lạnh Sunhouse UltraPURE SHA76222KL 11 lõi",
+      "priceOld": "10.590.000 đ",
+      "priceNew": "6.590.000 đ",
+      "rating": 4.5
+    },
+    {
+      "id": 3,
+      "imgSrc": "./img/smart-tivi-samsung-4k-crystal.jpg",
+      "name": "Samsung Smart TV UA70DU7000",
+      "priceOld": "24.990.000 đ",
+      "priceNew": "14.900.000 đ",
+      "rating": 4.5
+    },
+    {
+      "id": 4,
+      "imgSrc": "./img/midea.jpg",
+      "name": "Máy hút bụi cầm tay Midea MVC-SC861B",
+      "priceOld": "1.090.000 đ",
+      "priceNew": "690.000 đ",
+      "rating": 4.5
+    },
+    {
+      "id": 5,
+      "imgSrc": "./img/midea.jpg",
+      "name": "Máy hút bụi cầm tay Midea MVC-SC861B",
+      "priceOld": "1.090.000 đ",
+      "priceNew": "690.000 đ",
+      "rating": 4.5
+    },
+    {
+      "id": 6,
+      "imgSrc": "./img/midea.jpg",
+      "name": "Máy hút bụi cầm tay Midea aaaaaaaMVC-SC861B",
+      "priceOld": "1.090.000 đ",
+      "priceNew": "690.000 đ",
+      "rating": 4.5
+    },
+    {
+        "id": 7,
+        "imgSrc": "./img/midea.jpg",
+        "name": "Máy hút bụi cầm tay Midea aaaaaaaMVC-SC861B",
+        "priceOld": "1.090.000 đ",
+        "priceNew": "690.000 đ",
+        "rating": 4.5
+      },
+      {
+        "id": 8,
+        "imgSrc": "./img/midea.jpg",
+        "name": "Máy hút bụi cầm tay Midea aaaaaaaMVC-SC861B",
+        "priceOld": "1.090.000 đ",
+        "priceNew": "690.000 đ",
+        "rating": 4.5
+      }
+  ]
+  

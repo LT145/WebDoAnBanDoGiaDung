@@ -1,0 +1,39 @@
+[
+    {
+      "id": 1,
+      "sale": "Giảm 40%",
+      "imgSrc": "./img/noi-chien-khong-dau-philips-na130-00-6-2-lit.jpg",
+      "name": "Nồi cơm điện tử Sunhouse 1.8 lít SHD8911",
+      "priceOld": "1.990.000 đ",
+      "priceNew": "1.190.000 đ",
+      "rating": 4.5
+    },
+    {
+      "id": 2,
+      "sale": "Giảm 26%",
+      "imgSrc": "./img/noi-com-dien-tu-sunhouse-18-lit.jpg",
+      "name": "Panasonic Inverter 170 lít NR-BA190PPVN",
+      "priceOld": "6.790.000 đ",
+      "priceNew": "4.990.000 đ",
+      "rating": 4.5
+    },
+    {
+      "id": 3,
+      "sale": "Giảm 24%",
+      "imgSrc": "./img/panasonic-nr-ba190ppvn.jpg",
+      "name": "Nồi chiên không dầu Philips NA130/00 6.2 lít",
+      "priceOld": "2.090.000 đ",
+      "priceNew": "1.590.000 đ",
+      "rating": 5
+    },
+    {
+      "id": 4,
+      "sale": "Giảm 27%",
+      "imgSrc": "./img/panasonic-nr-ba190ppvn.jpg",
+      "name": "Nồi chiên không dầu Ko mỡ Philips NA130/00 6.2 lít",
+      "priceOld": "22.090.000 đ",
+      "priceNew": "1.590.000 đ",
+      "rating": 4.5
+    }
+  ]
+  

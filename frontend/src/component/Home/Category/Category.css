@@ -1,0 +1,59 @@
+#table-container{
+    display: flex;
+    flex-direction: column;
+    margin: 0px auto;
+    margin-top: 11px;
+    background-color: white;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    width: 1150px; 
+    min-width: 1150px;
+}
+
+.row {
+    display: flex; 
+    justify-content: space-between; 
+    margin-bottom: 10px;
+}
+
+.cell {
+    width: 175px; 
+    height: 150px; /* Tăng chiều cao để thêm không gian cho văn bản */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.cell img {
+    max-width: 100%; 
+    max-height: 80px; /* Đặt chiều cao ảnh nhỏ hơn */
+    object-fit: cover;
+}
+
+.cell span {
+    margin-top: 5px;
+    font-size: 14px;
+    color: #333;
+    text-align: center;
+}
+
+.cell:hover{
+    background-color: #ccc;
+    border-radius: 10px;
+}
+
+.label {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background-color: red;
+    color: white;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 3px;
+    z-index: 1;
+}

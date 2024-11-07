@@ -1,0 +1,97 @@
+#thongso{
+    width: 736px;
+    height: auto;
+    border: solid #F29F41 1px;
+    margin-top: 15px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center
+}
+
+#thongso .text{
+    width: 245px;
+    height: 40px;
+    border: solid #F29F41 1px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+
+#thongso .text:hover{
+    background-color: #F29F41;
+}
+
+#thongso img{
+   width: 100%;
+   height: auto;
+   margin-top: 10px;
+   display: block;
+}
+
+/* XỔ NỘI DUNG  */
+.box-specifi {
+    width: 690px;
+    border: solid #F29F41 1px;
+    border-radius: 15px;
+    margin: 10px 50px;
+    padding: 10px;
+}
+
+#toggleButton {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+}
+
+#toggleButton h3 {
+    margin: 0; 
+}
+
+#toggleButton i {
+    margin-left: 10px;
+}
+
+.text-specifi {
+    list-style: none;
+    padding: 0; 
+    display: none;
+}
+
+.text-specifi li {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 10px; 
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc; 
+}
+
+.text-specifi li:last-child {
+    border-bottom: none;
+}
+
+.text-specifi.active {
+    display: block;
+}
+
+h3 {
+    margin: 0; 
+    cursor: pointer;
+}
+
+.text-specifi .circle1{
+    display: block;
+    line-height: 25px;
+    margin-right: 150px;
+}
+
+.text-specifi .circle2 {
+    line-height: 25px;
+    display: block;
+    margin: 5px 0;
+}

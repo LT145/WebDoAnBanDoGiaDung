@@ -1,0 +1,244 @@
+#box-right {
+    width: 460px;
+    height: 750px;
+    margin-top: 10px;
+    border: 1px solid #F29F41;
+    border-radius: 15px;
+    background-color: #f9f9f9;
+    padding: 15px;
+}
+
+#box-right img {
+    width: 430px;
+    height: auto;
+    border-radius: 10px;
+    margin: 10px 0;
+}
+
+.box03 {
+    display: flex;
+    flex-direction: row; 
+    gap: 10px;
+    margin: 0 15px;
+}
+
+.box03_item {
+    flex: 1;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #F29F41;
+    border-radius: 8px;
+    color: black;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.box03_item.act {
+    background-color: #F29F41;
+    color: white;
+}
+
+.box03_item:hover {
+    background-color: #F29F41;
+    color: white;
+}
+
+.buy, .loca {
+    display: flex;
+    margin: 20px 0px;
+    gap: 5px;
+}
+
+.loca a {
+    text-decoration: none;
+    margin-left: 5px;
+    color: blue;
+}
+
+.buy h3 {
+    color: red;
+}
+
+.buy .label {
+    background-color: #ccc;
+    font-size: 10px;
+    color: black;
+    border-radius: 16px;
+    padding: 3px 8px;
+    margin-top: 2px;
+    margin-left: 5px;
+}
+
+.block__promo {
+    margin-top: 15px;
+    border: solid #d78d24 1px;
+    padding-bottom: 10px;
+}
+
+.pr-top {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: #F29F41;
+    border-bottom: solid #ccc 1px;
+}
+
+.pr-top p {
+    margin: 10px;
+}
+
+.pr-txtb {
+    font-weight: bold;
+}
+
+.pr-content {
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.pr-item {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.divb {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nb {
+    font-weight: bold;
+    color: #F29F41;
+    font-size: 18px;
+}
+
+.divb-right p {
+    margin: 0;
+    font-size: 14px;
+}
+
+.divb-right a {
+    color: #F29F41;
+    text-decoration: none;
+}
+
+.giaohang {
+    margin-top: 10px;
+    border-bottom: solid #ccc 1px;
+}
+
+.giaohang i {
+    color: blue;
+    margin-bottom: 10px;
+}
+
+.giaohang a {
+    text-decoration: none;
+    color: blue;
+    margin-bottom: 10px;
+}
+
+.block-button {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.button-row {
+    display: flex;
+    flex: 1;
+    gap: 10px;
+}
+
+.button-row a i {
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+.btn-ins {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.btn-ins span {
+    margin-top: 5px;
+    font-size: 12px;
+}
+
+.btn-ins:hover {
+    background-color: #0056b3;
+}
+
+.btn-buynow, .btn-ins {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    font-size: 14px;
+    text-decoration: none;
+    color: white;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+.btn-buynow{
+    font-size: 20px;
+}
+.btn-buynow1 {
+    font-size: 15px;
+    flex: 1;
+    border: solid #F29F41 1px;
+    text-decoration: none;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    color: #cc5c00;
+}
+.btn-buynow1 i{
+    margin-left: 10px;
+}
+.btn-buynow {
+    background-color: #f29f41;
+}
+
+.btn-ins {
+    background-color: #007bff;
+}
+
+.btn-buynow:hover {
+    background-color: #cc5c00;
+}
+
+.btn-ins:hover {
+    background-color: #0056b3;
+}
+
+.phone {
+    display: flex;
+    gap: 6px;
+}
+
+.shop i, .phone i {
+    color: #F29F41;
+}
+
+.shop a, .phone a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+.shop {
+    margin-top: 10px;
+}

@@ -1,0 +1,201 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+  
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+#header {
+  width: 100%; 
+  height: 65px;
+  background-color: #EF850D;
+  display: flex;
+  justify-content: center; 
+  top: 0;
+  left: 0;
+  z-index: 98;
+  position: sticky;
+  min-width: 1150px;
+}
+
+.menu {
+  width: 1150px; 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo_menu {
+  display: flex;
+  align-items: center;
+}
+
+#header .menu .logo_menu img {
+  width: 233px;
+  height: 65px;
+}
+
+#location {
+  width: 160px;
+  height: 43px;
+  margin-right: 5px;
+  background-color: #F29F41;
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+#location .icon_location {
+  display: flex;
+  align-items: center;
+  gap: 5px; /* Khoảng cách ảnh và văn bản */
+  color: white;
+  font-size: 14px;
+  text-align: left;
+  justify-content: space-between;
+  width: 90%;
+}
+
+#location .icon_location .fa-location-dot {
+  font-size: 25px;
+  margin-left: 15px;
+}
+
+#location .icon_location p {
+  margin: 0;
+  line-height: 1.2; 
+  font-size: 13px;
+}
+
+#header .search {
+  width: 22%;
+  height: 32px;
+  border-radius: 20px;
+  background-color: white;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.btn_search {
+  width: 100%; 
+  height: 100%; 
+  border: none;
+  outline: none;
+  padding-left: 35px; 
+  border-radius: 20px;
+  text-align: center; 
+  font-size: 14px;
+}
+
+.search .fa-magnifying-glass {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #F29F41;
+  font-size: 16px;
+}
+
+#Phone, #Truck, #Bag, #user {
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  padding: 5px 5px; 
+  margin-left: 5px;
+}
+
+#Phone:hover, #Truck:hover, #Bag:hover, #user:hover {
+  background-color: #F29F41;
+}
+
+.icon_Truck{
+  margin-right: -10px;
+  width: 50px;
+  height: 40px;
+  font-size: 30px; 
+  align-items: center;
+  display: flex;
+}
+.icon_user {
+  margin-right: -10px;
+  width: 160px;
+  height: 40px;
+  font-size: 30px; 
+  align-items: center;
+  display: flex;
+}
+.icon_phone, .icon_Bag {
+  margin-right: -10px;
+  width: 40px;
+  height: 40px;
+  font-size: 30px; 
+  align-items: center;
+  display: flex;
+}
+.SDT p, .Check p, .Bag_text p {
+  margin: 0; 
+  color: white; 
+  font-size: 14px; 
+}
+#user .icon_user p {
+  margin: 0; 
+  color: white; 
+  font-size: 18px; 
+}
+#user {
+  width: 11%;
+  height: 43px; 
+  background-color: #F29F41;
+  padding: 0 10px; 
+}
+
+#user .icon_user .fa-user {
+  color: white; 
+  font-size: 30px; 
+  margin-right: 5px; 
+}
+#location {
+  position: relative;
+}
+
+.icon_location {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.icon_location p {
+  margin: 0;
+  padding-left: 8px;
+}
+
+.location_dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  width: 100%;
+  z-index: 1;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.location_dropdown li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.location_dropdown li:hover,
+.location_dropdown li.active {
+  background-color: #f0f0f0;
+}
