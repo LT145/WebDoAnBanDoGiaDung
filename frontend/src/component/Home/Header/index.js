@@ -85,19 +85,6 @@ const Nav = () => {
         </p>
       </div>
     </div>
-    <div id="Truck">
-      <div className="icon_Truck">
-        <i
-          className="fa-solid fa-truck-fast"
-          style={{ color: "white", fontSize: 25 }}
-        />
-      </div>
-      <div className="Check">
-        <p>
-          Tra cứu <br /> đơn hàng
-        </p>
-      </div>
-    </div>
     <div id="Bag">
       <div className="icon_Bag">
         <i
