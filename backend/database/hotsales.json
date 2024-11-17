@@ -63,5 +63,14 @@
         "priceNew": "690.000 đ",
         "rating": 4.5
       }
+      ,
+      {
+        "id": 9,
+        "imgSrc": "./img/midea.jpg",
+        "name": "Máy hút beụi cầm tay Midea aaaaaaaMVC-SC861B",
+        "priceOld": "1.33090.000 đ",
+        "priceNew": "690.000 đ",
+        "rating": 4.5
+      }
   ]
   
