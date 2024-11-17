@@ -12,7 +12,6 @@ import './Detail.css'
 function Detail(){
     return(
         <div>
-            <Nav />
             <Nav_mini />
             <Product />
             <div style={{display:'flex', width:'1150px', gap:'15px',margin:'0px auto', minWidth:'1150px'}}>

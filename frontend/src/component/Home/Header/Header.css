@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap');
 * {
   margin: 0;
   padding: 0;
@@ -33,6 +34,7 @@ html {
 .logo_menu {
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 
 #header .menu .logo_menu img {
@@ -108,6 +110,7 @@ html {
   border-radius: 8px;
   padding: 5px 5px; 
   margin-left: 5px;
+  cursor: pointer;
 }
 
 #Phone:hover, #Truck:hover, #Bag:hover, #user:hover {
@@ -129,6 +132,7 @@ html {
   font-size: 30px; 
   align-items: center;
   display: flex;
+  justify-content: space-between;
 }
 .icon_phone, .icon_Bag {
   margin-right: -10px;
@@ -146,13 +150,16 @@ html {
 #user .icon_user p {
   margin: 0; 
   color: white; 
-  font-size: 18px; 
+  font-size: 16px; 
+  margin-right: 10px;
+  
 }
 #user {
   width: 11%;
   height: 43px; 
   background-color: #F29F41;
   padding: 0 10px; 
+  
 }
 
 #user .icon_user .fa-user {

@@ -10,8 +10,12 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "axios": "^1.7.7",
     "body-parser": "^1.20.3",
     "cors": "^2.8.5",
-    "express": "^4.21.1"
+    "emailjs": "^4.0.3",
+    "emailjs-com": "^3.2.0",
+    "express": "^4.21.1",
+    "jsonwebtoken": "^9.0.2"
   }
 }

@@ -1,0 +1,160 @@
+#title {
+    margin-top: 10px;
+    text-align: center;
+}
+
+#title h3 {
+    margin-top: 15px;
+    font-size: 25px;
+}
+
+/* Logo login options (Google, Zalo) */
+#logo-log {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    gap: 40px;
+}
+
+#logo-log a {
+    text-decoration: none;
+    color: black;
+    font-size: 22px;
+    margin-left: 10px;
+}
+
+#logo-log img {
+    max-width: 100%;
+    height: 30px;
+}
+
+.zalo, .gg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    padding: 14px 0;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+/* Divider with "Hoặc" */
+#or {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+hr {
+    background-color: #dbdbdb;
+    height: 1px;
+    width: 177px;
+    border: none;
+    margin: 1.5rem 0;
+}
+
+/* Form styling */
+.login-form {
+    max-width: 480px;
+    margin: 30px auto;
+    padding: 30px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.box-input {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.box-input__main {
+    width: 100%;
+    padding: 14px 16px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.box-input__main:focus {
+    border-color: #f29f41; 
+}
+
+.box-input_label {
+    position: absolute;
+    top: 50%;
+    left: 16px;
+    transform: translateY(-50%);
+    font-size: 14px;
+    color: #aaa;
+    pointer-events: none;
+    transition: 0.3s ease;
+    opacity: 0;
+}
+
+.box-input__main:focus + .box-input_label,
+.box-input__main:not(:placeholder-shown) + .box-input_label {
+    top: -10px;
+    left: 12px;
+    font-size: 12px;
+    color: #f29f41;
+    background-color: #f9f9f9;
+    padding: 0 5px;
+    opacity: 1;
+}
+
+.box-input_err-validate {
+    display: none;
+    color: red;
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+.box-input__main:invalid ~ .box-input_err-validate {
+    display: block;
+}
+
+.group_option {
+    text-align: right;
+    margin-bottom: 10px;
+}
+
+.forget-pass {
+    color: #777;
+    font-size: 14px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+/* Submit button styling */
+.btn-form_submit {
+    width: 100%;
+    padding: 14px;
+    font-size: 18px;
+    color: white;
+    background-color: #f29f41;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Sign-up section */
+.singup {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.singup a {
+    text-decoration: none;
+    margin-left: 10px;
+    color: #F29F41;
+}
+.btn-dangky{
+    cursor: pointer;
+    margin-left: 30px;
+}

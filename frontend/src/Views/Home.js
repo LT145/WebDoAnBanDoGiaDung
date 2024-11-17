@@ -10,7 +10,6 @@ import Footer from '../component/Home/Footer';
 function Home() {
   return (
     <div>
-      <Nav />
       <Banner />
       <Category />
       <Hotsale />
