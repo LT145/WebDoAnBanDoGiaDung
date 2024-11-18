@@ -10,6 +10,7 @@ import './App.css'
 import FPW from './component/User/ForgetPassword';
 import OTP from './component/User/OTP';
 import ResetPassword from './component/User/ResetPass';
+import ListProduct from './component/Product/ListProduct';
 
 function App() {
   const location = useLocation(); // Lấy đường dẫn hiện tại
@@ -20,7 +21,8 @@ function App() {
       {!location.pathname.startsWith('/admin') && <Nav />} 
 
       <Routes>
-        <Route path="/" element={<Home />} /> {/* Trang Home */}
+        {/* <Route path="/" element={<Home />} /> */}
+        <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
         <Route path="/login" element={<Login />} /> {/* Trang Login */}
         <Route path="/admin/*" element={<Admin />} /> {/* Trang Admin */}

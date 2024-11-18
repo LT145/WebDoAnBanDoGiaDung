@@ -202,7 +202,7 @@ const Register = () => {
         <button type="submit" className="btn-form_submit">Đăng Ký</button>
         <div className="singup">
           <p>Bạn đã có tài khoản?</p>
-          <a href="./log.html">Đăng nhập ngay</a>
+          <a href="" onClick={() => navigate('/login')}>Đăng nhập ngay</a>
         </div>
       </form>
     </div>
