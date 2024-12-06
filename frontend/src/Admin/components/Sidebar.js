@@ -40,27 +40,15 @@ const Sidebar = () => {
             </div>
           </li>
           <li>
-            <div onClick={() => navigate('/products')}>
+            <div onClick={() => navigate('products')}>
               <i className="fa-solid fa-box" />
               <span className="link-name">Quản Lý Sản Phẩm</span>
             </div>
           </li>
           <li>
-            <div onClick={() => navigate('/feedback')}>
+            <div onClick={() => navigate('ordermanager')}>
               <i className="fa-solid fa-message" />
-              <span className="link-name">Phản Hồi Khách Hàng</span>
-            </div>
-          </li>
-          <li>
-            <div>
-              <i className="fa-solid fa-money-check-dollar" />
-              <span className="link-name">Doanh Thu</span>
-            </div>
-          </li>
-          <li>
-            <div>
-              <i className="fa-solid fa-share" />
-              <span className="link-name">Share</span>
+              <span className="link-name">Quản Lý Đơn Hàng</span>
             </div>
           </li>
         </ul>

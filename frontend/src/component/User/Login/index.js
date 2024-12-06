@@ -29,7 +29,7 @@ export default function LoginForm() {
 
       // Lưu token, username và role vào localStorage
       localStorage.setItem('token', data.token);
-      localStorage.setItem('id', data.id);
+      localStorage.setItem('iduser', data.id);
       localStorage.setItem('username', data.username);  // Lưu username
       localStorage.setItem('name', data.name); 
       localStorage.setItem('role', data.role);  // Lưu role

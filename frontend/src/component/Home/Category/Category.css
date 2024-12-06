@@ -7,13 +7,14 @@
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
     border-radius: 10px;
     width: 1150px; 
-    min-width: 1150px;
+    min-width: 1150px;  
 }
 
 .row {
     display: flex; 
     justify-content: space-between; 
     margin-bottom: 10px;
+    flex-wrap: wrap;
 }
 
 .cell {
@@ -25,6 +26,8 @@
     justify-content: center;
     position: relative;
     overflow: hidden;
+    cursor: pointer;
+    flex: 1 1 12.5%; 
 }
 
 .cell img {

@@ -71,7 +71,7 @@ const InfoUser = () => {
 
   // Hàm để chuyển hướng đến trang đổi mật khẩu
   const goToChangePassword = () => {
-    navigate('/change-password'); // Điều hướng đến trang đổi mật khẩu
+    navigate('/reset-password'); // Điều hướng đến trang đổi mật khẩu
   };
 
   return (
@@ -148,24 +148,6 @@ const InfoUser = () => {
             <i
               className="fa-regular fa-pen-to-square edit-icon"
               onClick={() => editField('dob')}
-            />
-          </div>
-        </div>
-
-        <div className="form__group">
-          <label htmlFor="password">Đổi Mật Khẩu:</label>
-          <div className="field">
-            <input
-              id="password"
-              type="password"
-              disabled={!isEditable.password}
-              className="group__item"
-              value={userInfo.password}
-              onChange={(e) => setUserInfo({ ...userInfo, password: e.target.value })}
-            />
-            <i
-              className="fa-regular fa-pen-to-square edit-icon"
-              onClick={() => editField('password')}
             />
           </div>
         </div>

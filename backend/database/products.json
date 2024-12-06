@@ -1,39 +1,742 @@
 [
-    {
-      "id": 1,
-      "sale": "Giảm 40%",
-      "imgSrc": "./img/noi-chien-khong-dau-philips-na130-00-6-2-lit.jpg",
-      "name": "Nồi cơm điện tử Sunhouse 1.8 lít SHD8911",
-      "priceOld": "1.990.000 đ",
-      "priceNew": "1.190.000 đ",
-      "rating": 4.5
-    },
-    {
-      "id": 2,
-      "sale": "Giảm 26%",
-      "imgSrc": "./img/noi-com-dien-tu-sunhouse-18-lit.jpg",
-      "name": "Panasonic Inverter 170 lít NR-BA190PPVN",
-      "priceOld": "6.790.000 đ",
-      "priceNew": "4.990.000 đ",
-      "rating": 4.5
-    },
-    {
-      "id": 3,
-      "sale": "Giảm 24%",
-      "imgSrc": "./img/panasonic-nr-ba190ppvn.jpg",
-      "name": "Nồi chiên không dầu Philips NA130/00 6.2 lít",
-      "priceOld": "2.090.000 đ",
-      "priceNew": "1.590.000 đ",
-      "rating": 5
-    },
-    {
-      "id": 4,
-      "sale": "Giảm 27%",
-      "imgSrc": "./img/panasonic-nr-ba190ppvn.jpg",
-      "name": "Nồi chiên không dầu Ko mỡ Philips NA130/00 6.2 lít",
-      "priceOld": "22.090.000 đ",
-      "priceNew": "1.590.000 đ",
-      "rating": 4.5
-    }
-  ]
-  
+  {
+    "id": 1,
+    "name": "LG Inverter 9 Kg T2109VSAB",
+    "img": "/img/product/may-giat-lg-t2109vsab 9KG.jpg",
+    "discountprice": 5490000,
+    "price": 7390000,
+    "categoryId": 1,
+    "quantity": 3,
+    "active": "Sẵn Hàng"
+  },
+  {
+    "id": 2,
+    "name": "LG Inverter 9 Kg T2109VSAB",
+    "img": "/img/product/may-giat-lg-t2109vsab 9KG.jpg",
+    "discountprice": 5490000,
+    "price": 7390000,
+    "categoryId": 1,
+    "quantity": 3,
+    "active": "Sẵn Hàng"
+  },
+  {
+    "id": 3,
+    "name": "Casper Inverter 95 Kg WF-95VG5",
+    "img": "/img/product/may-giat-casper-inverter-9.5KG.jpg",
+    "discountprice": -1,
+    "price": 7490000,
+    "categoryId": 1,
+    "quantity": 22,
+    "active": "Sẵn Hàng"
+  },
+  {
+    "id": 4,
+    "name": "Samsung Inverter 12 Kg WA12CG5745BVSV",
+    "img": "/img/product/may-giat-samsung-12kg.jpg",
+    "discountprice": -1,
+    "price": 9990000,
+    "categoryId": 1,
+    "quantity": 10,
+    "active": "Sẵn Hàng"
+  },
+  {
+    "id": 5,
+    "name": "Máy lọc nước RO Sunhouse SHA8800KL",
+    "img": "/img/product/aqua-8.8KG.jpg",
+    "discountprice": 4890000,
+    "price": 8090000,
+    "categoryId": 1,
+    "quantity": 0,
+    "active": "Sẵn Hàng"
+  },
+  {
+    "id": 6,
+    "name": "Toshiba Inverter 10 Kg TW-T21BU110UWV(MG)",
+    "img": "/img/product/may-loc-nuoc-ro-sunhouse-sha8800KL.jpg",
+    "discountprice": 4090000,
+    "price": 6890000,
+    "categoryId": 2,
+    "quantity": 10,
+    "active": "Sẵn Hàng"
+  },
+  {
+    "id": 7,
+    "name": "Máy lọc nước RO Sunhouse SHA8866K",
+    "img": "/img/product/ro-sunhouse-sha8866k.jpg",
+    "discountprice": 3190000,
+    "price": 4600000,
+    "categoryId": 2,
+    "quantity": 10,
+    "active": "Sẵn Hàng"
+  },
+  {
+    "id": 8,
+    "name": "Máy lọc nước RO nóng nguội lạnh Hòa Phát HPN666",
+    "img": "/img/product/may-loc-nuoc-ro-nong-nguoi-lanh-hoa-phat-HPN666.jpg",
+    "discountprice": 5990000,
+    "price": 10870000,
+    "categoryId": 2,
+    "quantity": 10,
+    "active": "Sẵn Hàng"
+  },
+  {
+    "id": 9,
+    "name": "Máy lọc nước RO nóng nguội lạnh Karofi KAD-X39",
+    "img": "/img/product/ro-nong-lanh-karofi-KAD-X39.jpg",
+    "discountprice": 7890000,
+    "price": 10490000,
+    "categoryId": 2,
+    "quantity": 10,
+    "active": "Sẵn Hàng"
+  },
+  {
+    "id": 10,
+    "name": "Máy lọc nước RO Kangaroo KG116I",
+    "img": "/img/product/may-loc-nuoc-ro-kangaroo-kg116i.jpg",
+    "discountprice": 4490000,
+    "price": 6190000,
+    "categoryId": 2,
+    "quantity": 10,
+    "active": "Sẵn Hàng"
+  },
+  {
+    "id": 11,
+    "name": "Samsung Inverter 488 lít RF48A4010M9/SV",
+    "img": "/img/product/samsung-rf48a4010m9-SV.jpg",
+    "discountprice": 21890000,
+    "price": 23790000,
+    "categoryId": 3,
+    "quantity": 1,
+    "active": "Sẵn Hàng"
+  },
+  {
+    "id": 12,
+    "name": "LG Inverter 470 lít GR-B50BL",
+    "img": "/img/product/tu-lanh-lg-inverter-470-lit-multi-door-GR-B50BL.jpg",
+    "discountprice": 17390000,
+    "price": 24990000,
+    "categoryId": 3,
+    "quantity": 10,
+    "active": "Sẵn Hàng"
+  },
+  {
+    "id": 13,
+    "name": "Samsung Inverter 655 lít RS62R5001B4/SV",
+    "img": "/img/product/samsung-RS62R001B4-SV.jpg",
+    "discountprice": 19190000,
+    "price": 22490000,
+    "categoryId": 3,
+    "quantity": 10,
+    "active": "Sẵn Hàng"
+  },
+  {
+    "id": 14,
+    "name": "Aqua Inverter 469 lít AQR-M536XA(GB)",
+    "img": "/img/product/tu-lanh-aqua-inverter-469-lit-aqr-m536xa-gb.jpg",
+    "discountprice": 16390000,
+    "price": 17990000,
+    "categoryId": 3,
+    "quantity": 10,
+    "active": "Sẵn Hàng"
+  },
+  {
+    "id": 15,
+    "name": "Samsung Inverter 655 lít RS62R5001M9/SV",
+    "img": "/img/product/samsung-rs62r5001m9-sv.jpg",
+    "discountprice": 18390000,
+    "price": 21990000,
+    "categoryId": 3,
+    "quantity": 10,
+    "active": "Sẵn Hàng"
+  },
+  {
+    "id": 16,
+    "name": "Nồi cơm điện tử BlueStone 15 lít RCB-5946",
+    "img": "/img/product/noi-com-dien-tu-bluestone-15-lit-rcb-5946.jpg",
+    "discountprice": 1290000,
+    "price": 2499000,
+    "categoryId": 4,
+    "quantity": 10,
+    "active": "Sẵn Hàng"
+  },
+  {
+    "id": 17,
+    "name": "Nồi cơm điện tử Electrolux 1 lít E7RC1-550K",
+    "img": "/img/product/E7RC1-550K.jpg",
+    "discountprice": 1490000,
+    "price": 1490000,
+    "categoryId": 4,
+    "quantity": 10,
+    "active": "Sẵn Hàng"
+  },
+  {
+    "id": 18,
+    "name": "Nồi cơm điện tử Sunhouse 18 lít SHD8911",
+    "img": "/img/product/noi-com-dien-tu-sunhouse-18-lit-shd8911.jpg",
+    "discountprice": 1290000,
+    "price": 2350000,
+    "categoryId": 4,
+    "quantity": 8,
+    "active": "Sẵn Hàng"
+  },
+  {
+    "id": 19,
+    "name": "Nồi cơm điện tử Cuckoo 18 lít CR-1020F",
+    "img": "/img/product/cuckoo-18-lit-cr-1020f.jpg",
+    "discountprice": 1690000,
+    "price": 10490000,
+    "categoryId": 4,
+    "quantity": 10,
+    "active": "Sẵn Hàng"
+  },
+  {
+    "id": 20,
+    "name": "Nồi cơm điện tử Kangaroo 15 lít KG15DR10",
+    "img": "/img/product/noi-com-dien-tu-kangaroo-kg15dr10.jpg",
+    "discountprice": 1390000,
+    "price": 2050000,
+    "categoryId": 4,
+    "quantity": 10,
+    "active": "Sẵn Hàng"
+  },
+  {
+    "id": 21,
+    "name": "Nagakawa Inverter 1 HP NIS-C09R2T28",
+    "img": "/img/product/may-lanh-nagakawa-inverter-1-hp-nis-c09r2t28.jpg",
+    "discountprice": 5690000,
+    "price": 8690000,
+    "categoryId": 5,
+    "quantity": 10,
+    "active": "Sẵn Hàng"
+  },
+  {
+    "id": 22,
+    "name": "Aqua Inverter 1 HP AQA-RV10QA2",
+    "img": "/img/product/aqua-inverter-1-hp-aqa-rv10qa2.jpg",
+    "discountprice": 7790000,
+    "price": 9090000,
+    "categoryId": 5,
+    "quantity": 10,
+    "active": "Sẵn Hàng"
+  },
+  {
+    "id": 23,
+    "name": "Funiki Inverter 1 HP HIC09TMUST3",
+    "img": "/img/product/funiki-1-hp-hic09tmust3.jpg",
+    "discountprice": 5790000,
+    "price": 5790000,
+    "categoryId": 5,
+    "quantity": 10,
+    "active": "Sẵn Hàng"
+  },
+  {
+    "id": 24,
+    "name": "Panasonic Inverter 1 HP CU/CS-XU9ZKH-8",
+    "img": "/img/product/may-lanh-panasonic-inverter-1-hp-CU-CS-XU9ZKH-8.jpg",
+    "discountprice": 13990000,
+    "price": 15990000,
+    "categoryId": 5,
+    "quantity": 10,
+    "active": "Sẵn Hàng"
+  },
+  {
+    "id": 25,
+    "name": "Casper Inverter 1 HP TC-09IS35",
+    "img": "/img/product/casper-tc-09is35.jpg",
+    "discountprice": -1,
+    "price": 7490000,
+    "categoryId": 5,
+    "quantity": 109100,
+    "active": "Sẵn Hàng"
+  },
+  {
+    "id": 26,
+    "name": "Bếp từ hồng ngoại âm Junger SIS-66 4200W",
+    "img": "/img/product/hong-ngoai-junger-sis-66 4200W.png",
+    "discountprice": 10190000,
+    "price": 10190000,
+    "categoryId": 6,
+    "quantity": 10,
+    "active": "Sẵn Hàng"
+  },
+  {
+    "id": 27,
+    "name": "Bếp từ đôi âm Junger MK-22 4000W",
+    "img": "/img/product/doi-junger-mk22-4000W.png",
+    "discountprice": 12590000,
+    "price": 17990000,
+    "categoryId": 6,
+    "quantity": 10,
+    "active": "Sẵn Hàng"
+  },
+  {
+    "id": 28,
+    "name": "Bếp từ hồng ngoại âm BlueStone ICB-6911 3400W",
+    "img": "/img/product/hong-ngoai-bluestone-icb-6911-3400W.jpg",
+    "discountprice": 6590000,
+    "price": 9980000,
+    "categoryId": 6,
+    "quantity": 10,
+    "active": "Sẵn Hàng"
+  },
+  {
+    "id": 29,
+    "name": "Bếp từ đôi âm Hafele HC-I2712A (53661716) 4200W",
+    "img": "/img/product/doi-hafele-hc-i2712a-4200W.png",
+    "discountprice": 7290000,
+    "price": 14490000,
+    "categoryId": 6,
+    "quantity": 10,
+    "active": "Sẵn Hàng"
+  },
+  {
+    "id": 30,
+    "name": "Bếp từ đôi âm Rapido RI4000DS 4200W",
+    "img": "/img/product/bep-tu-doi-lap-am-rapido-ri4000ds-4200W.png",
+    "discountprice": 3590000,
+    "price": 7490000,
+    "categoryId": 6,
+    "quantity": 10,
+    "active": "Sẵn Hàng"
+  },
+  {
+    "id": 31,
+    "name": "Tủ đông Kangaroo  327 lít KG498KX2",
+    "img": "/img/product/kangaroo-kg498kx2.jpeg",
+    "discountprice": 8490000,
+    "price": 9790000,
+    "categoryId": 7,
+    "quantity": 10,
+    "active": "Sẵn Hàng"
+  },
+  {
+    "id": 32,
+    "name": "Tủ đông Hoà Phát  245 lít HPF BD6245",
+    "img": "/img/product/tu-dong-hoa-phat-hpf-BD6245.jpg",
+    "discountprice": 5790000,
+    "price": 7390000,
+    "categoryId": 7,
+    "quantity": 10,
+    "active": "Sẵn Hàng"
+  },
+  {
+    "id": 33,
+    "name": "Tủ đông mini Kangaroo  90 lít KG090C1N",
+    "img": "/img/product/tu-dong-kangaroo-90-lit-kg090c1n.jpg",
+    "discountprice": 3690000,
+    "price": 4190000,
+    "categoryId": 7,
+    "quantity": 10,
+    "active": "Sẵn Hàng"
+  },
+  {
+    "id": 34,
+    "name": "Tủ mát Hoà Phát  280 lít HSR D6280",
+    "img": "/img/product/tu-mat-hoa-phat-280-lit-hsr-d6280.jpg",
+    "discountprice": 8690000,
+    "price": 11200000,
+    "categoryId": 7,
+    "quantity": 10,
+    "active": "Sẵn Hàng"
+  },
+  {
+    "id": 35,
+    "name": "Tủ đông Sanaky  220 lít VH-2899W1",
+    "img": "/img/product/sanaky-vh-2899w1.jpg",
+    "discountprice": 5990000,
+    "price": 8690000,
+    "categoryId": 7,
+    "quantity": 10,
+    "active": "Sẵn Hàng"
+  },
+  {
+    "id": 36,
+    "name": "Nồi chiên không dầu Ferroli FAF-50M3 5 lít",
+    "img": "/img/product/ferroli-faf-50m3 5LIT.jpg",
+    "discountprice": 1290000,
+    "price": 1899000,
+    "categoryId": 8,
+    "quantity": 10,
+    "active": "Sẵn Hàng"
+  },
+  {
+    "id": 37,
+    "name": "Lò chiên không dầu Rapido RAF-12M1 12 lít",
+    "img": "/img/product/Lo-chien-khong-dau-RapidoRAF-12M1 12LIT.jpg",
+    "discountprice": 1690000,
+    "price": 3190000,
+    "categoryId": 8,
+    "quantity": 10,
+    "active": "Sẵn Hàng"
+  },
+  {
+    "id": 38,
+    "name": "Nồi chiên không dầu Sunhouse SHD4036 9 lít",
+    "img": "/img/product/noi-chien-khong-dau-sunhouse-shd4036-9-lit.jpg",
+    "discountprice": 1875000,
+    "price": 3750000,
+    "categoryId": 8,
+    "quantity": 10,
+    "active": "Sẵn Hàng"
+  },
+  {
+    "id": 39,
+    "name": "Nồi chiên không dầu AVA 55K07A 5.5 lít",
+    "img": "/img/product/Ava-55K07A-0-5.5LIT.jpg",
+    "discountprice": 1390000,
+    "price": 2590000,
+    "categoryId": 8,
+    "quantity": 10,
+    "active": "Sẵn Hàng"
+  },
+  {
+    "id": 40,
+    "name": "Lò chiên không dầu Ferroli FAF-12M 12 lít",
+    "img": "/img/product/lo-chien-khong-dau-ferroli-faf-12m-12-lit.jpg",
+    "discountprice": 1790000,
+    "price": 3190000,
+    "categoryId": 8,
+    "quantity": 10,
+    "active": "Sẵn Hàng"
+  },
+  {
+    "id": 41,
+    "name": "Máy nước nóng trực tiếp Rapido SONNE - SN45",
+    "img": "/img/product/truc-tiep-rapido-4500w-sonne-sn4-5.jpg",
+    "discountprice": 1090000,
+    "price": 1390000,
+    "categoryId": 9,
+    "quantity": 10,
+    "active": "Sẵn Hàng"
+  },
+  {
+    "id": 42,
+    "name": "Máy nước nóng trực tiếp Ariston AURES PREMIUM 45P PEARL",
+    "img": "/img/product/may-nuoc-nong-truc-tiep-ariston-4500w-aures-premium-45p-pearl.jpg",
+    "discountprice": 3090000,
+    "price": 4090000,
+    "categoryId": 9,
+    "quantity": 10,
+    "active": "Sẵn Hàng"
+  },
+  {
+    "id": 43,
+    "name": "Máy nước nóng trực tiếp Ferroli MIDO-MSP 45S",
+    "img": "/img/product/ferroli-mido-msp-45s-thumb.jpg",
+    "discountprice": 2990000,
+    "price": 3490000,
+    "categoryId": 9,
+    "quantity": 10,
+    "active": "Sẵn Hàng"
+  },
+  {
+    "id": 44,
+    "name": "Máy nước nóng trực tiếp Ariston AURES PREMIUM+ 45P",
+    "img": "/img/product/may-nuoc-nong-truc-tiep-ariston-4500w-aures-premium-45p.jpg",
+    "discountprice": 4390000,
+    "price": 4590000,
+    "categoryId": 9,
+    "quantity": 10,
+    "active": "Sẵn Hàng"
+  },
+  {
+    "id": 45,
+    "name": "Máy nước nóng trực tiếp Electrolux EWE451QB-W4",
+    "img": "/img/product/truc-tiep-electrolux-4500w-ewe451qb-w4-thumb.jpg",
+    "discountprice": 3490000,
+    "price": 4090000,
+    "categoryId": 9,
+    "quantity": 10,
+    "active": "Sẵn Hàng"
+  },
+  {
+    "id": 46,
+    "name": "Máy hút bụi dạng hộp Philips FC9350",
+    "img": "/img/product/May-Hut-Bui-philips-fc9350.jpg",
+    "discountprice": 1890000,
+    "price": 3309000,
+    "categoryId": 10,
+    "quantity": 10,
+    "active": "Sẵn Hàng"
+  },
+  {
+    "id": 47,
+    "name": "Máy lọc không khí Electrolux PA91-406GY 28W",
+    "img": "/img/product/May-Loc-Khong-Khi.png",
+    "discountprice": 9300000,
+    "price": 10390000,
+    "categoryId": 10,
+    "quantity": 10,
+    "active": "Sẵn Hàng"
+  },
+  {
+    "id": 48,
+    "name": "Bình đun siêu tốc Delites 15 lít ST15S01",
+    "img": "/img/product/binh-sieu-toc-delites-st15s01-15-li-t.jpg",
+    "discountprice": -1,
+    "price": 265000,
+    "categoryId": 10,
+    "quantity": 10,
+    "active": "Sẵn Hàng"
+  },
+  {
+    "id": 49,
+    "name": "Quạt lửng Asia VY628890 75W",
+    "img": "/img/product/quat-lung-asia-vy628890-75w.jpg",
+    "discountprice": 479000,
+    "price": 710000,
+    "categoryId": 10,
+    "quantity": 10,
+    "active": "Sẵn Hàng"
+  },
+  {
+    "id": 50,
+    "name": "Máy sấy tóc 1500W Sunhouse SHD2308W",
+    "img": "/img/product/may-say-toc-sunhouse-shd2308w.jpg",
+    "discountprice": 300000,
+    "price": 385000,
+    "categoryId": 10,
+    "quantity": 10,
+    "active": "Sẵn Hàng"
+  },
+  {
+    "id": 51,
+    "name": "Samsung Smart TV UA55CU8000",
+    "img": "/img/product/smart-tivi-samsung-4k-55-inch-ua55cu80000.jpg",
+    "discountprice": 13400000,
+    "price": 17790000,
+    "categoryId": 11,
+    "quantity": 10,
+    "active": "Sẵn Hàng"
+  },
+  {
+    "id": 52,
+    "name": "AQUA Google TV QLED AQT65S800UX",
+    "img": "/img/product/google-tv-aqua-qled-4k-65-inch-aqt65s800ux.jpg",
+    "discountprice": 13990000,
+    "price": 17990000,
+    "categoryId": 11,
+    "quantity": 10,
+    "active": "Sẵn Hàng"
+  },
+  {
+    "id": 53,
+    "name": "Samsung Smart TV UA70DU7000",
+    "img": "/img/product/smart-tivi-samsung-4k-crystal-uhd-70-inch.jpg",
+    "discountprice": 15660000,
+    "price": 24900000,
+    "categoryId": 11,
+    "quantity": 10,
+    "active": "Sẵn Hàng"
+  },
+  {
+    "id": 54,
+    "name": "LG Smart TV NanoCell 55NANO76SQA",
+    "img": "/img/product/smart-nanocell-lg-4k-55-inch-55nano76sqa.jpg",
+    "discountprice": 14400000,
+    "price": 22900000,
+    "categoryId": 11,
+    "quantity": 10,
+    "active": "Sẵn Hàng"
+  },
+  {
+    "id": 55,
+    "name": "Samsung Smart TV QLED QA65Q65D",
+    "img": "/img/product/tivi-qled-samsung-4k-65-inch-qa65q65d.jpg",
+    "discountprice": 15990000,
+    "price": 20900000,
+    "categoryId": 11,
+    "quantity": 10,
+    "active": "Sẵn Hàng"
+  },
+  {
+    "id": 56,
+    "name": "Máy lọc không khí LG PuriCare 360 Hit AS60GHWG0 41W",
+    "img": "/img/product/may-loc-khong-khi-lg-puricare-360-hit-as60ghwg0-41w.png",
+    "discountprice": 6390000,
+    "price": 8390000,
+    "categoryId": 12,
+    "quantity": 10,
+    "active": "Sẵn Hàng"
+  },
+  {
+    "id": 57,
+    "name": "Máy lọc không khí Xiaomi Smart Air Purifier 4 compact EU (BHR5860EU) 27W",
+    "img": "/img/product/xiaomi-smart-air-purifier-4-compact-eu-bhr5860eu-27w.png",
+    "discountprice": 1870000,
+    "price": 2590000,
+    "categoryId": 12,
+    "quantity": 10,
+    "active": "Sẵn Hàng"
+  },
+  {
+    "id": 58,
+    "name": "Máy lọc không khí Samsung AX32BG3100GBSV 41W",
+    "img": "/img/product/May-Lo-Khong-Khi-samsung-ax32bg3100gbsv.png",
+    "discountprice": 4610000,
+    "price": 6390000,
+    "categoryId": 12,
+    "quantity": 10,
+    "active": "Sẵn Hàng"
+  },
+  {
+    "id": 59,
+    "name": "Máy lọc không khí Samsung AX32BG3100GBSV 41W",
+    "img": "/img/product/May-Loc-Khong-Khi-sharp-fp-j30e-.png",
+    "discountprice": 4610000,
+    "price": 6390000,
+    "categoryId": 12,
+    "quantity": 10,
+    "active": "Sẵn Hàng"
+  },
+  {
+    "id": 60,
+    "name": "Máy lọc không khí Electrolux EP32-25UGA 25W",
+    "img": "/img/product/may-loc-khong-khi-electrolux-ep32-25uga-25w.png",
+    "discountprice": 3890000,
+    "price": 4590000,
+    "categoryId": 12,
+    "quantity": 10,
+    "active": "Sẵn Hàng"
+  },
+  {
+    "id": 61,
+    "name": "Máy sấy thông hơi Casper 72 Kg TD-72VWD",
+    "img": "/img/product/may-say-casper-td-72vwd-fix-thumb.jpg",
+    "discountprice": 5490000,
+    "price": 6490000,
+    "categoryId": 13,
+    "quantity": 10,
+    "active": "Sẵn Hàng"
+  },
+  {
+    "id": 62,
+    "name": "Máy sấy thông hơi Toshiba 7 Kg TD-H80SEV(SK)",
+    "img": "/img/product/may-say-toshiba-td-h80sev-sk.jpg",
+    "discountprice": 5990000,
+    "price": 7090000,
+    "categoryId": 13,
+    "quantity": 10,
+    "active": "Sẵn Hàng"
+  },
+  {
+    "id": 63,
+    "name": "Máy sấy thông hơi Aqua 7 Kg AQH-V700FW",
+    "img": "/img/product/May-Say-Thong-Hoi-aqua-aqh-v700fw-170223.jpg",
+    "discountprice": 5490000,
+    "price": 6490000,
+    "categoryId": 13,
+    "quantity": 10,
+    "active": "Sẵn Hàng"
+  },
+  {
+    "id": 64,
+    "name": "Máy sấy bơm nhiệt Samsung 9 Kg DV90T7240BB/SV",
+    "img": "/img/product/may-say-samsung-dv90t7240bb-sv.jpg",
+    "discountprice": 21990000,
+    "price": 23390000,
+    "categoryId": 13,
+    "quantity": 10,
+    "active": "Sẵn Hàng"
+  },
+  {
+    "id": 65,
+    "name": "Máy sấy thông hơi Electrolux 75 Kg EDV754H3WB",
+    "img": "/img/product/may-say-thong-hoi-electrolux-75-kg-edv754h3wb.jpg",
+    "discountprice": 7990000,
+    "price": 9990000,
+    "categoryId": 13,
+    "quantity": 10,
+    "active": "Sẵn Hàng"
+  },
+  {
+    "id": 66,
+    "name": "Robot hút bụi lau nhà Ecovacs N30 PRO OMNI",
+    "img": "/img/product/robot-hut-bui-lau-nha-ecovacs-n30-pro-omni.jpg",
+    "discountprice": 12410000,
+    "price": 20900000,
+    "categoryId": 14,
+    "quantity": 10,
+    "active": "Sẵn Hàng"
+  },
+  {
+    "id": 67,
+    "name": "Robot hút bụi lau nhà Xiaomi X20+",
+    "img": "/img/product/robot-hut-bui-lau-nha-xiaomi-x20-plus.jpg",
+    "discountprice": 11410000,
+    "price": 12990000,
+    "categoryId": 14,
+    "quantity": 10,
+    "active": "Sẵn Hàng"
+  },
+  {
+    "id": 68,
+    "name": "Robot hút bụi lau nhà Xiaomi Vacuum E10",
+    "img": "/img/product/robot-hut-bui-lau-nha-xiaomi-vacuum-e10.jpg",
+    "discountprice": 3610000,
+    "price": 6490000,
+    "categoryId": 14,
+    "quantity": 10,
+    "active": "Sẵn Hàng"
+  },
+  {
+    "id": 69,
+    "name": "Robot hút bụi lau nhà Samsung VR05R5050WK/SV",
+    "img": "/img/product/Robot-Hut-Bui-samsung-vr05r5050wk-sv.jpg",
+    "discountprice": 6610000,
+    "price": 7890000,
+    "categoryId": 14,
+    "quantity": 10,
+    "active": "Sẵn Hàng"
+  },
+  {
+    "id": 70,
+    "name": "Robot hút bụi lau nhà Xiaomi Vacuum S20",
+    "img": "/img/product/robot-hut-bui-lau-nha-xiaomi-vacuum-s20.jpg",
+    "discountprice": 5410000,
+    "price": 6000000,
+    "categoryId": 14,
+    "quantity": 10,
+    "active": "Sẵn Hàng"
+  },
+  {
+    "id": 71,
+    "name": "Loa kéo karaoke Nanomax Pro-9500 3600W",
+    "img": "/img/product/loa-keo-karaoke-nanomax-pro-9500-3600w.jpg",
+    "discountprice": 22490000,
+    "price": 24990000,
+    "categoryId": 15,
+    "quantity": 10,
+    "active": "Sẵn Hàng"
+  },
+  {
+    "id": 72,
+    "name": "Loa kéo Jammy S8078K",
+    "img": "/img/product/loa-jammy-s8078k.jpg",
+    "discountprice": 15390000,
+    "price": 16990000,
+    "categoryId": 15,
+    "quantity": 10,
+    "active": "Sẵn Hàng"
+  },
+  {
+    "id": 73,
+    "name": "Loa kéo Dalton TS-12G450X",
+    "img": "/img/product/loa-karaoke-dalton-ts-12g450x.jpg",
+    "discountprice": 7590000,
+    "price": 8290000,
+    "categoryId": 15,
+    "quantity": 10,
+    "active": "Sẵn Hàng"
+  },
+  {
+    "id": 74,
+    "name": "Loa kéo Nanomax S-820",
+    "img": "/img/product/loa-keo-karaoke-nanomax-s-820-400w.jpg",
+    "discountprice": 3990000,
+    "price": 4390000,
+    "categoryId": 15,
+    "quantity": 10,
+    "active": "Sẵn Hàng"
+  }
+]

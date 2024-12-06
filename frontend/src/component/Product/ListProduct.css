@@ -1,0 +1,234 @@
+html{
+    scroll-behavior: smooth;
+    
+}
+/* Sắp Xếp============================================================================ */
+.filter-sort {
+    background-color: #f9f9f9;
+    padding: 10px 20px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.filter-sort__title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    margin-right: 20px;
+}
+
+.filter-sort_list-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.btn-filter {
+    display: flex;
+    align-items: center;
+    padding: 8px 15px;
+    font-size: 14px;
+    text-decoration: none;
+    color: #333;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    cursor: pointer; 
+}
+
+.btn-filter .icon {
+    margin-right: 5px;
+}
+
+.btn-filter i {
+    margin-right: 5px; /* Khoảng cách giữa icon và text */
+    font-size: 16px;
+    color: #555;
+}
+
+.btn-filter:hover {
+    background-color: #f29f41;
+    color: #fff;
+    border-color: #f29f41;
+}
+
+.btn-filter:hover i {
+    color: #fff; 
+}
+
+.btn-filter.active {
+    background-color: #f29f41;
+    color: #fff;
+    border-color: #f29f41;
+}
+
+.btn-filter.active i {
+    color: #fff;
+}
+
+/* Sản Phẩm========================================== */
+
+.productlist_container {
+    width: 1150px;
+    min-width: 1150px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 0px auto;
+}
+
+
+.product_row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px; 
+}
+
+.product_box {
+    position: relative;
+    width: calc(16.66% - 10px);
+    min-height: 320px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    padding: 8px;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    background-color: white;
+}
+
+.product_box:hover {
+    transform: translateY(-5px);
+}
+
+.product_box .sale {
+    position: absolute;
+    top: 0;
+    left: 0; 
+    background-color: red;
+    color: white;
+    padding: 4px 8px;
+    font-size: 12px;
+    font-weight: bold;
+    border-bottom-right-radius: 15px;
+}
+
+.product_box img {
+    width: 100%;
+    max-height: 150px;
+    margin: auto;
+    object-fit: contain;
+    border-radius: 5px;
+    padding-top: 20px;
+}
+
+
+.product_box .name {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    margin: 10px 0;
+    text-decoration: none;
+    text-align: center;
+        display: -webkit-box;             /* Sử dụng flexbox để hỗ trợ nhiều dòng */
+        -webkit-line-clamp: 2;            /* Giới hạn tối đa số dòng (2 dòng) */
+        -webkit-box-orient: vertical;     /* Định hướng chiều của box */
+        overflow: hidden;                 /* Ẩn nội dung bị cắt */
+        text-overflow: ellipsis;          /* Hiển thị dấu "..." nếu nội dung bị cắt */
+        word-wrap: break-word;            /* Cho phép từ bị ngắt xuống dòng khi cần */
+      
+}
+
+.product_box .money_sale {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.product_box .money_sale .gia_1 {
+    font-size: 14px;
+    color: red;
+    font-weight: bold;
+}
+
+.product_box .money_sale .gia_2 {
+    font-size: 14px;
+    color: #888;
+    text-decoration: line-through;
+}
+
+.product_box .star {
+    text-align: center;
+    color: gold;
+    margin-bottom: 10px;
+}
+
+.product_box .buy {
+    display: block;
+    text-align: center;
+    background-color: #ff4500;
+    color: white;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+.product_box .buy:hover {
+    background-color: #e63;
+}
+.cared {
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    padding: 10px 20px; 
+}
+
+.cared button {
+    background: #f8f6f6; 
+    border: none;
+    border-radius: 20%;
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: #333 1px solid;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cared button:hover {
+    transform: scale(1.1);
+}
+
+.cared button i {
+    font-size: 18px; 
+    color: black;
+}
+
+.cared p {
+    margin: 0; 
+    font-size: 16px; 
+    font-weight: bold;
+    color: #444;
+    background: linear-gradient(135deg, #ff7eb3, #ff758c);
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent; 
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}

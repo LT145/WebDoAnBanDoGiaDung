@@ -7,6 +7,13 @@ import Adminad from './components/Adminad';
 import RegisterAdmin from './components/RegisterAdmin';
 import Home from '../Views/Home';
 import './admin.css';
+import ProductManagement from './components/Products';
+import AddProduct from './components/AddProduct';
+import EditProduct from './components/EditProduct';
+import Stockimport from './components/Stockimport';
+import LowStock from './components/LowStock';
+import OrderManager from './components/OrderManager';
+import OrderDetails from './components/OrderDetails';
 
 function Admin() {
   // Lấy role từ localStorage
@@ -26,6 +33,13 @@ function Admin() {
             <Route path="userad" element={<User />} />
             <Route path="adminad" element={<Adminad />} />
             <Route path="adminad/registerAdmin" element={<RegisterAdmin />} />
+            <Route path="products" element={<ProductManagement />} />
+            <Route path="products/addproduct" element={<AddProduct />} />
+            <Route path="products/editproduct/:id" element={<EditProduct />} />
+            <Route path="products/stockimport" element={<Stockimport />} />
+            <Route path="products/lowstock" element={<LowStock />} />
+            <Route path="ordermanager" element={<OrderManager />} />
+            <Route path="ordermanager/orderdetail" element={<OrderDetails />} />
           </Routes>
         </div>
       </div>
