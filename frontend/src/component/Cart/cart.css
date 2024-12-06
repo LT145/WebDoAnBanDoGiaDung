@@ -1,0 +1,280 @@
+/* Giỏ hàng của bạn======================================================================================================== */
+
+#cart-header {
+    display: flex;
+    align-items: center; 
+    justify-content: space-between; 
+    font-size: 25px;
+    text-align: center;
+    color: #323232;
+    position: relative;
+    padding: 10px 20px;   
+  }
+  
+  #cart-header p {
+    flex-grow: 1;
+    text-align: center;
+    margin: 0;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  #cart-header .down {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50%;
+    height: 1px;
+    background-color: #e5e5e5;
+  }
+
+/* button giỏ hàng==================================================================================== */
+#cart-actions {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px; 
+}
+
+.select-all {
+  margin-top: 5px;
+  font-size: 16px;
+  color: #333;
+  text-align: center;
+}
+.select-all input{
+  margin-right: 10px;
+}
+  
+/* box sản phẩm */
+
+.cart-item-wrapper {
+    align-items: center;  
+    margin: 0px auto;
+    margin-bottom: 70px;
+}
+
+.cart-item-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    width: 600px;
+    height: 152px;
+  }
+  
+  .checkbox-product {
+    display: flex;
+    align-items: center;
+    gap:20px
+  }
+  
+  .product-img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 5px;
+  }
+  
+  .product-info {
+    flex-grow: 1;
+  }
+  
+  .product-name {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    text-decoration: none;
+  }
+  
+  .product-name:hover {
+    color: #F29F41;
+  }
+  
+  .box-info_box-price {
+    display: flex;
+    gap: 10px;
+    margin-top: 5px;
+    justify-content: space-between;
+  }
+  
+  .product_price--show {
+    font-size: 16px;
+    color: red;
+  }
+  
+  .product-original-price {
+    font-size: 14px;
+    text-decoration: line-through;
+    color: #aaa;
+  }
+  
+  .cart-item {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    position: relative;
+  }
+  
+  .action-trash {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between; 
+    gap: 10px;
+  }
+  
+  .action {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .action input{
+    border: none;
+    width: 30px;
+    height: 23px;
+  }
+  
+  .action button {
+    background-color: #F29F41;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    width: 30px;
+    height: 30px;
+  }
+  
+  .action button:hover {
+    background-color: #E29A34;
+  }
+  
+  .quantity {
+    width: 50px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .action-trash .fa-trash {
+    font-size: 20px;
+    transition: color 0.3s ease;
+    margin-bottom: 30px;
+  }
+  
+  .action-trash .fa-trash:hover {
+    color: #E29A34;
+    cursor: pointer;
+  }
+  
+/* Thanh toán========================================================================================================== */
+.buy{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#BottomBar {
+  align-items: center;
+  background-color: #fff;
+  border: 1px solid rgba(145, 158, 171, .239);
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  bottom: 0;
+  box-shadow: 0 -4px 20px -1px rgba(40, 124, 234, .15);
+  display: flex;
+  justify-content: space-between;
+  left: 50%;
+  margin: auto;
+  max-width: 600px;
+  padding: 10px 10px 15px;
+  position: fixed;
+  transform: translateX(-50%);
+  width: 100%;
+  z-index: 11;
+}
+#BottomBar span{
+  color: red;
+  font-weight: 500;
+}
+  .temp-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .price-temp p {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .price-temp span {
+    font-weight: bold;
+    color: red;
+  }
+  
+  .bmsm-info__text {
+    font-size: 14px;
+    color: #637381;
+  }
+  
+  /* Nút "Mua ngay" */
+  .btn-action {
+    padding: 10px 20px;
+    background-color: #d3d3d3;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+
+  .btn-action:hover {
+    background-color: #E29A34;
+  }
+  
+.quantity-control button{
+  width: 20px;
+  padding: 0px;
+}
+.quantity-control{
+  width: 70px;
+  display: flex;
+  justify-content: space-between;
+}
+.quantity-show{
+  text-wrap: nowrap;
+}
+.quantity-show span{
+  color: red;
+}
+/* Khi nút bị vô hiệu hóa */
+button:disabled {
+  cursor: not-allowed; /* Thay đổi con trỏ thành nút cấm */
+  opacity: 0.5; /* Giảm độ sáng của nút khi vô hiệu hóa */
+}
+.quantity-remaining{
+  text-align: right;
+}
+.cart-item-container {
+  position: relative;
+  /* Đảm bảo container có vị trí relative */
+}
+
+.remove-item i{
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  background-color: transparent;
+  border: none;
+  color: #E29A34;
+  font-size: 20px;
+  cursor: pointer;
+}

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 const User = () => {
   const [customers, setCustomers] = useState([]);
+  const [searchTerm, setSearchTerm] = useState(""); // State để lưu giá trị tìm kiếm
 
   // Gọi API để lấy danh sách người dùng từ backend
   useEffect(() => {
@@ -53,12 +54,28 @@ const User = () => {
     }
   };
 
+  // Lọc khách hàng theo từ khóa tìm kiếm
+  const filteredCustomers = customers.filter(customer => {
+    const searchValue = searchTerm.toLowerCase();
+    return (
+      (customer.name && customer.name.toLowerCase().includes(searchValue)) ||
+      (customer.phone && customer.phone.toLowerCase().includes(searchValue)) ||
+      (customer.username && customer.username.toLowerCase().includes(searchValue)) ||
+      (customer.email && customer.email.toLowerCase().includes(searchValue))
+    );
+  });
+
   return (
     <section className="dashboard">
       <div className="top">
         <div className="search-box">
           <i className="fa-solid fa-magnifying-glass" />
-          <input type="text" placeholder="Search...." />
+          <input
+            type="text"
+            placeholder="Search...."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)} // Cập nhật giá trị tìm kiếm
+          />
         </div>
       </div>
       <div className="dash-content">
@@ -82,7 +99,7 @@ const User = () => {
                 </tr>
               </thead>
               <tbody>
-                {customers.map((customer, index) => (
+                {filteredCustomers.map((customer, index) => (
                   <tr key={index}>
                     <td>{customer.name}</td>
                     <td>{customer.phone}</td>

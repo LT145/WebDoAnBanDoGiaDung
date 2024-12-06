@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+
 const Adminad = () => {
   const [admins, setAdmins] = useState([]);
+  const [searchTerm, setSearchTerm] = useState(''); // Thêm state cho giá trị tìm kiếm
   const navigate = useNavigate();
+
   // Gọi API để lấy danh sách người dùng từ backend
   useEffect(() => {
     const fetchAdmins = async () => {
@@ -53,14 +56,34 @@ const Adminad = () => {
     }
   };
 
+  // Hàm tìm kiếm
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value); // Cập nhật giá trị tìm kiếm khi người dùng nhập
+  };
+
+  // Lọc danh sách admin theo giá trị tìm kiếm
+  const filteredAdmins = admins.filter(admin => {
+    const searchValue = searchTerm.toLowerCase();
+    return (
+      (admin.name && admin.name.toLowerCase().includes(searchValue)) ||
+      (admin.phone && admin.phone.toLowerCase().includes(searchValue)) ||
+      (admin.username && admin.username.toLowerCase().includes(searchValue)) ||
+      (admin.email && admin.email.toLowerCase().includes(searchValue))
+    );
+  });
+
   return (
     <section className="dashboard">
       <div className="top">
         <div className="search-box">
           <i className="fa-solid fa-magnifying-glass" />
-          <input type="text" placeholder="Search...." />
+          <input
+            type="text"
+            placeholder="Search...."
+            value={searchTerm} // Liên kết với giá trị của state tìm kiếm
+            onChange={handleSearchChange} // Gọi hàm khi người dùng nhập
+          />
         </div>
-        
       </div>
       <div className="dash-content">
         <div className="overview">
@@ -84,7 +107,7 @@ const Adminad = () => {
                 </tr>
               </thead>
               <tbody>
-                {admins.map((admin, index) => (
+                {filteredAdmins.map((admin, index) => (
                   <tr key={index}>
                     <td>{admin.name}</td>
                     <td>{admin.phone}</td>

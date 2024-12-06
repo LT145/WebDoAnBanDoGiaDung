@@ -119,7 +119,7 @@ const Nav = () => {
             </p>
           </div>
         </div>
-        <div id="Bag">
+        <div id="Bag" onClick={() => navigate('/cart')}>
           <div className="icon_Bag">
             <i
               className="fa-solid fa-bag-shopping"

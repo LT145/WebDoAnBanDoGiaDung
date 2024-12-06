@@ -14,7 +14,7 @@ function Home() {
       <Category />
       <Hotsale />
       <Banner2 />
-      <ProductTable />
+      {/* <ProductTable /> */}
       <Banner3 />
       <Footer />
     </div>

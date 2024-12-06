@@ -27,28 +27,16 @@ const SidebarUser = () => {
       </div>
       <div className="menu-items">
         <ul className="nav-links">
-          <li>
-            <a href="./user-home.html">
+          <li onClick={() => navigate('profile')}>
+            <a>
               <i className="fa-regular fa-user" />
               <span className="link-name">Thông Tin Tài Khoản</span>
             </a>
           </li>
-          <li>
-            <a href="./user-buy.html">
+          <li onClick={() => navigate('history-order')}>
+            <a>
               <i className="fa-regular fa-clipboard" />
               <span className="link-name">Lịch Sử Mua Hàng</span>
-            </a>
-          </li>
-          <li>
-            <a href="./user-feebback.html">
-              <i className="fa-regular fa-message" />
-              <span className="link-name">Đánh Giá Của Tôi</span>
-            </a>
-          </li>
-          <li>
-            <a href="./user-support.html">
-              <i className="fa-solid fa-headset" />
-              <span className="link-name">Giúp Đỡ</span>
             </a>
           </li>
           {role === 'admin' && (
