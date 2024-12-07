@@ -11,13 +11,10 @@ const OTP = () => {
   const [message, setMessage] = useState('');
   const [generatedOtp, setGeneratedOtp] = useState('');
   
-  const otpSent = useRef(false);  // Dùng useRef để giữ giá trị giữa các lần render
-
+  const otpSent = useRef(false);  
   useEffect(() => {
-    if (email && !otpSent.current && !generatedOtp) {  // Kiểm tra nếu OTP chưa được gửi và OTP chưa được tạo
-      sendOtp();
-      otpSent.current = true;  // Đánh dấu rằng OTP đã được gửi
-    }
+    if (email && !otpSent.current && !generatedOtp) {        sendOtp();
+      otpSent.current = true;      }
   }, [email, generatedOtp]);
 
   const generateOTP = () => {
@@ -27,18 +24,13 @@ const OTP = () => {
   const sendOtp = async () => {
     try {
       const otp = generateOTP();
-      setGeneratedOtp(otp); // Lưu OTP được tạo ra để xác minh sau
-
-      // Gửi OTP qua email
-      await emailjs.send(
-        'service_ilyoatp', // Thay YOUR_SERVICE_ID bằng ID dịch vụ của bạn
-        'template_rsp9r4j', // Thay YOUR_TEMPLATE_ID bằng ID mẫu của bạn
-        {
+      setGeneratedOtp(otp); 
+            await emailjs.send(
+        'service_ilyoatp',         'template_rsp9r4j',         {
           otp: otp,
           email: email,
         },
-        'R7jXW_YZ9f8xHg7YO' // Thay YOUR_PUBLIC_KEY bằng khóa công khai của bạn từ EmailJS
-      );
+        'R7jXW_YZ9f8xHg7YO'       );
 
       setMessage(`OTP đã được gửi tới email của bạn: ${email}`);
     } catch (err) {
@@ -51,11 +43,9 @@ const OTP = () => {
     setError('');
     setMessage('');
 
-    // Kiểm tra OTP người dùng nhập với OTP đã được gửi
-    if (otp === generatedOtp) {
+        if (otp === generatedOtp) {
       setMessage('OTP hợp lệ! Bạn có thể thay đổi mật khẩu.');
-      // Điều hướng đến trang đặt lại mật khẩu hoặc tiếp tục xử lý đặt lại mật khẩu
-      navigate('/reset-password', { state: { email } });
+            navigate('/reset-password', { state: { email } });
     } else {
       setError('OTP không chính xác. Vui lòng thử lại.');
     }

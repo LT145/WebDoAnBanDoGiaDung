@@ -10,23 +10,19 @@ const FPW = () => {
     e.preventDefault();
     setError('');
 
-    // Kiểm tra nếu email hợp lệ
-    if (!email) {
+        if (!email) {
       setError('Vui lòng nhập email.');
       return;
     }
 
     try {
-      // Gửi yêu cầu GET đến backend để kiểm tra email
-      const response = await fetch(`http://localhost:5000/api/check-email?email=${email}`);
+            const response = await fetch(`http://localhost:5000/api/check-email?email=${email}`);
       const data = await response.json();
 
       if (data.exists) {
-        // Nếu email tồn tại, chuyển hướng đến trang OTP và truyền email
-        navigate('/otp', { state: { email } });
+                navigate('/otp', { state: { email } });
       } else {
-        // Nếu email không tồn tại, hiển thị thông báo lỗi
-        setError('Không có tài khoản nào liên kết với email này.');
+                setError('Không có tài khoản nào liên kết với email này.');
       }
     } catch (err) {
       setError('Có lỗi xảy ra. Vui lòng thử lại.');

@@ -1,17 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
-import './Header.css';
+import { useNavigate } from 'react-router-dom'; import './Header.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
-import logo from './img/logo.png'; // Ensure the path is correct
-
+import logo from './img/logo.png'; 
 const Nav = () => {
-  const navigate = useNavigate(); // Khởi tạo navigate từ useNavigate
-
+  const navigate = useNavigate(); 
   const [currentLocation, setCurrentLocation] = useState('Hồ Chí Minh');
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const [locationsData, setLocationsData] = useState([]);
-  const [username, setUsername] = useState(''); // Khởi tạo state để lưu username
-
+  const [username, setUsername] = useState(''); 
   const toggleDropdown = () => {
     setDropdownOpen(!isDropdownOpen);
   };
@@ -21,29 +17,24 @@ const Nav = () => {
     setDropdownOpen(false);
   };
 
-  // Lấy dữ liệu locations từ API
-  useEffect(() => {
+    useEffect(() => {
     const fetchLocations = async () => {
       try {
         const response = await fetch('http://localhost:5000/api/locations');
         const data = await response.json();
-        setLocationsData(data); // Cập nhật state với dữ liệu lấy được
-      } catch (error) {
+        setLocationsData(data);       } catch (error) {
         console.error('Error fetching locations:', error);
       }
     };
 
     fetchLocations();
 
-    // Lấy username từ localStorage khi component mount
-    const savedUsername = localStorage.getItem('username');
+        const savedUsername = localStorage.getItem('username');
     if (savedUsername) {
       setUsername(savedUsername);
     }
-  }, []); // Chạy một lần khi component mount
-
-  // Cập nhật lại username mỗi khi localStorage thay đổi
-  useEffect(() => {
+  }, []); 
+    useEffect(() => {
     const handleStorageChange = () => {
       const savedUsername = localStorage.getItem('username');
       if (savedUsername) {
@@ -51,22 +42,18 @@ const Nav = () => {
       }
     };
 
-    // Lắng nghe sự kiện thay đổi trong localStorage
-    window.addEventListener('storage', handleStorageChange);
+        window.addEventListener('storage', handleStorageChange);
 
-    // Cleanup event listener khi component unmount
-    return () => {
+        return () => {
       window.removeEventListener('storage', handleStorageChange);
     };
   }, []);
 
   const goToLogin = () => {
-    navigate('/login'); // Điều hướng đến trang login khi nhấn vào "Đăng nhập"
-  };
+    navigate('/login');   };
 
   const goToProfile = () => {
-    navigate('/profile'); // Điều hướng đến trang profile khi nhấn vào tên người dùng (nếu đã đăng nhập)
-  };
+    navigate('/profile');   };
 
   return (
     <div id="header">

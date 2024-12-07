@@ -27,13 +27,10 @@ export default function LoginForm() {
         return;
       }
 
-      // Lưu token, username và role vào localStorage
-      localStorage.setItem('token', data.token);
+            localStorage.setItem('token', data.token);
       localStorage.setItem('iduser', data.id);
-      localStorage.setItem('username', data.username);  // Lưu username
-      localStorage.setItem('name', data.name); 
-      localStorage.setItem('role', data.role);  // Lưu role
-      localStorage.setItem('email', data.email);
+      localStorage.setItem('username', data.username);        localStorage.setItem('name', data.name); 
+      localStorage.setItem('role', data.role);        localStorage.setItem('email', data.email);
       localStorage.setItem('phone', data.phone);
       localStorage.setItem('dob', data.dob);
 

@@ -4,12 +4,9 @@ import "./cart.css";
 import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
-  const [cartItems, setCartItems] = useState([]); // State to store cart items
-  const [loading, setLoading] = useState(true);
+  const [cartItems, setCartItems] = useState([]);   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [selectAll, setSelectAll] = useState(false); // Checkbox chọn tất cả
-  const [selectedItems, setSelectedItems] = useState([]); // Danh sách sản phẩm được chọn
-
+  const [selectAll, setSelectAll] = useState(false);   const [selectedItems, setSelectedItems] = useState([]); 
   const navigate = useNavigate();
   const userId = localStorage.getItem("iduser");
   console.log(userId);
@@ -28,29 +25,23 @@ const Cart = () => {
         );
         const cartData = cartResponse.data;
 
-        // Nếu giỏ hàng trống, hiển thị thông báo giỏ hàng trống
-        if (cartData.length === 0) {
+                if (cartData.length === 0) {
           setError("Giỏ hàng của bạn hiện tại trống");
         }
 
-        // Fetch chi tiết sản phẩm cho mỗi item trong giỏ hàng
-        const cartItemsWithDetails = await Promise.all(
+                const cartItemsWithDetails = await Promise.all(
           cartData.map(async (item) => {
             const productResponse = await axios.get(
               `http://localhost:5000/api/products/findid/${item.productId}`
             );
             const productDetails = productResponse.data;
 
-            // Lưu số lượng còn lại của sản phẩm
-            const quantityAvailable = productDetails.quantity || 0;
+                        const quantityAvailable = productDetails.quantity || 0;
 
             return {
               ...item,
               productDetails,
-              quantity: item.quantity || 1, // Số lượng mặc định
-              isChecked: false, // Trạng thái checkbox
-              quantityAvailable, // Số lượng còn lại
-            };
+              quantity: item.quantity || 1,               isChecked: false,               quantityAvailable,             };
           })
         );
 
@@ -94,12 +85,10 @@ const Cart = () => {
         updatedItems[index].quantity + delta,
         updatedItems[index].quantityAvailable
       )
-    ); // Giới hạn số lượng không vượt quá số lượng còn lại
-    updatedItems[index].quantity = newQuantity;
+    );     updatedItems[index].quantity = newQuantity;
     setCartItems(updatedItems);
 
-    // Gửi request cập nhật số lượng
-    updateQuantityInBackend(updatedItems[index].productId, newQuantity);
+        updateQuantityInBackend(updatedItems[index].productId, newQuantity);
   };
 
   const updateQuantityInBackend = async (productId, quantity) => {
@@ -116,13 +105,11 @@ const Cart = () => {
 
   const handleRemoveItem = async (productId) => {
     try {
-      // Gửi yêu cầu xóa sản phẩm từ giỏ hàng
-      await axios.delete("http://localhost:5000/api/cart/remove", {
+            await axios.delete("http://localhost:5000/api/cart/remove", {
         data: { userId, productId },
       });
 
-      // Cập nhật lại giỏ hàng sau khi xóa sản phẩm
-      setCartItems(cartItems.filter((item) => item.productId !== productId));
+            setCartItems(cartItems.filter((item) => item.productId !== productId));
     } catch (err) {
       console.error("Error removing item:", err);
     }
@@ -280,8 +267,7 @@ const Cart = () => {
             <button
               className="btn-action"
               onClick={handleProceedToOrder}
-              disabled={selectedItems.length === 0} // Disable the button if no items are selected
-            >
+              disabled={selectedItems.length === 0}             >
               Mua ngay
             </button>
           </div>

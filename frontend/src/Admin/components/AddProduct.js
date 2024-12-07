@@ -1,20 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-
+import { useNavigate } from 'react-router-dom';
 const AddProduct = () => {
-  const [categories, setCategories] = useState([]); // State để lưu danh mục
-  const [selectedCategory, setSelectedCategory] = useState(''); // State để lưu danh mục đã chọn
-  const [quantity, setQuantity] = useState(0); // State để lưu số lượng sản phẩm
-  const [isDiscount, setIsDiscount] = useState(false); // State để kiểm tra khuyến mãi
-  const [price, setPrice] = useState(0); // State để lưu giá tiền
-  const [discountPrice, setDiscountPrice] = useState(-1); // Giá khuyến mãi mặc định là -1
-
-  // Gọi API để lấy danh sách danh mục
+  const navigate = useNavigate();
+  const [categories, setCategories] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState('');
+  const [quantity, setQuantity] = useState(0);
+  const [isDiscount, setIsDiscount] = useState(false);
+  const [price, setPrice] = useState(0);
+  const [discountPrice, setDiscountPrice] = useState(-1);
   useEffect(() => {
     const fetchCategories = async () => {
       try {
         const response = await axios.get('http://localhost:5000/api/categories');
-        setCategories(response.data); // Lưu danh mục vào state
+        setCategories(response.data);
       } catch (error) {
         console.error('Lỗi khi lấy dữ liệu danh mục:', error);
       }
@@ -23,40 +22,33 @@ const AddProduct = () => {
     fetchCategories();
   }, []);
 
-  // Xử lý khi người dùng submit form
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    const priceValue = Number(price); // Chuyển price thành số
-    const quantityValue = Number(quantity); // Chuyển quantity thành số
 
+    const priceValue = Number(price); const quantityValue = Number(quantity);
     const formData = new FormData();
     formData.append('product-name', e.target['product-name'].value);
-    formData.append('product-quantity', quantityValue); // Sử dụng số lượng đã chuyển thành số
-    formData.append('product-category', selectedCategory);
-    formData.append('product-price', priceValue);  // Sử dụng giá trị đã chuyển thành số
-    formData.append('is-discount', isDiscount);
+    formData.append('product-quantity', quantityValue); formData.append('product-category', selectedCategory);
+    formData.append('product-price', priceValue); formData.append('is-discount', isDiscount);
 
-    // Chỉ thêm giá khuyến mãi nếu có
     if (isDiscount && discountPrice > 0) {
-      formData.append('product-discount-price', discountPrice);  // Sử dụng giá trị đã chuyển thành số
+      formData.append('product-discount-price', discountPrice);
     }
 
-    formData.append('product-image', e.target['product-image'].files[0]); // Thêm ảnh vào FormData
-    
+    formData.append('product-image', e.target['product-image'].files[0]);
     try {
       const response = await axios.post('http://localhost:5000/api/products', formData, {
         headers: {
-          'Content-Type': 'multipart/form-data', // Đảm bảo gửi đúng content type cho file upload
+          'Content-Type': 'multipart/form-data',
         },
       });
-      alert(response.data.message); // Hiển thị thông báo thành công
+      alert(response.data.message);
     } catch (error) {
       console.error('Lỗi khi thêm sản phẩm:', error);
       alert('Thêm sản phẩm thất bại. Vui lòng thử lại.');
     }
   };
-  
+
   return (
     <section className="dashboard">
       <div className="top">
@@ -71,6 +63,10 @@ const AddProduct = () => {
           <div className="title">
             <i className="fa-solid fa-box" />
             <span className="text">Quản Lý Sản Phẩm</span>
+            <button className="btn-register-product" onClick={() => navigate('/admin/products')}>Toàn Bộ Sản Phẩm</button>
+            <button className="btn-register-product" onClick={() => navigate('/admin/products/stockimport')}>Nhập Hàng</button>
+            <button className="btn-register-product" onClick={() => navigate('/admin/products/lowstock')}>Tồn Kho Sắp Hết</button>
+            
           </div>
           <form className="product-form" onSubmit={handleSubmit}>
             <div className="input-group-container">
@@ -95,7 +91,7 @@ const AddProduct = () => {
                 <label htmlFor="product-category">Danh Mục:</label>
                 <select
                   id="product-category"
-                  name="product-category" 
+                  name="product-category"
                   value={selectedCategory}
                   onChange={(e) => setSelectedCategory(e.target.value)}
                   required
@@ -129,7 +125,7 @@ const AddProduct = () => {
                   checked={isDiscount}
                   onChange={() => {
                     setIsDiscount(!isDiscount);
-                    if (!isDiscount) setDiscountPrice(-1); // Reset giá khuyến mãi khi bỏ chọn
+                    if (!isDiscount) setDiscountPrice(-1);
                   }}
                 />
               </div>

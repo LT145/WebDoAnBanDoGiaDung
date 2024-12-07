@@ -1,17 +1,14 @@
-// src/components/Sidebar.js
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const Sidebar = () => {
   const navigate = useNavigate();
   const handleLogout = () => {
-    // Xóa token và thông tin người dùng trong localStorage
-    localStorage.removeItem('token');
+        localStorage.removeItem('token');
     localStorage.removeItem('username');
     localStorage.removeItem('role');
 
-    // Điều hướng về trang login
-    navigate('/home');
+        navigate('/home');
     window.location.reload();
   };
   return (

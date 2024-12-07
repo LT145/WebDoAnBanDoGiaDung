@@ -1,20 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate để chuyển hướng
-import './InfoUser.css';
+import { useNavigate } from 'react-router-dom'; import './InfoUser.css';
 
 const InfoUser = () => {
   const navigate = useNavigate();
 
-  // Lấy thông tin người dùng từ localStorage và lưu vào state
-  const [userInfo, setUserInfo] = useState({
+    const [userInfo, setUserInfo] = useState({
     id: localStorage.getItem('id'),
     username: localStorage.getItem('username'),
-    name: localStorage.getItem('name'),  // Chỉnh lại từ 'username' thành 'name'
-    email: localStorage.getItem('email'),
+    name: localStorage.getItem('name'),      email: localStorage.getItem('email'),
     phone: localStorage.getItem('phone'),
     dob: localStorage.getItem('dob'),
-    password: '', // Mật khẩu sẽ không lấy từ localStorage
-  });
+    password: '',   });
 
   const [isEditable, setIsEditable] = useState({
     name: false,
@@ -24,29 +20,24 @@ const InfoUser = () => {
     password: false,
   });
 
-  // Hàm để bật/tắt chỉnh sửa trường thông tin
-  const editField = (field) => {
+    const editField = (field) => {
     setIsEditable({ ...isEditable, [field]: true });
   };
 
-  // Hàm để cập nhật thông tin lên backend
-  const updateInfo = async () => {
-    const userId = userInfo.id;  // Lấy 'id' từ state 'userInfo'
-    try {
+    const updateInfo = async () => {
+    const userId = userInfo.id;      try {
       const response = await fetch(`http://localhost:5000/api/users/${userId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${localStorage.getItem('token')}`, // Token từ localStorage
-        },
+          'Authorization': `Bearer ${localStorage.getItem('token')}`,         },
         body: JSON.stringify({
           username: userInfo.username,
           name: userInfo.name,
           email: userInfo.email,
           phone: userInfo.phone,
           dob: userInfo.dob,
-          password: userInfo.password,  // Nếu thay đổi mật khẩu
-        }),
+          password: userInfo.password,          }),
       });
     
       const data = await response.json();
@@ -69,10 +60,8 @@ const InfoUser = () => {
   };
   
 
-  // Hàm để chuyển hướng đến trang đổi mật khẩu
-  const goToChangePassword = () => {
-    navigate('/reset-password'); // Điều hướng đến trang đổi mật khẩu
-  };
+    const goToChangePassword = () => {
+    navigate('/reset-password');   };
 
   return (
     <div className="dash-content">
@@ -88,13 +77,10 @@ const InfoUser = () => {
               type="text"
               disabled={!isEditable.name}
               className="group__item"
-              value={userInfo.name}  // Đảm bảo giá trị 'name' luôn cập nhật
-              onChange={(e) => setUserInfo({ ...userInfo, name: e.target.value })}  // Cập nhật name trong state
-            />
+              value={userInfo.name}                onChange={(e) => setUserInfo({ ...userInfo, name: e.target.value })}              />
             <i
               className="fa-regular fa-pen-to-square edit-icon"
-              onClick={() => editField('name')} // Chỉnh sửa từ 'username' thành 'name'
-            />
+              onClick={() => editField('name')}             />
           </div>
         </div>
 

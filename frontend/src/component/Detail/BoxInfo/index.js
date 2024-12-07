@@ -10,12 +10,10 @@ const BoxInfo = () => {
     installation: false,
   });
 
-  // Hàm xử lý toggle
-  const toggleSection = (section) => {
+    const toggleSection = (section) => {
     setActiveSections(prevState => ({
       ...prevState,
-      [section]: !prevState[section], // Đảo ngược trạng thái hiện tại của mục
-    }));
+      [section]: !prevState[section],     }));
   };
 
   return (

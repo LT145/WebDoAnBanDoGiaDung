@@ -4,8 +4,7 @@ import { useNavigate } from 'react-router-dom';
 const Register = () => {
   const [formData, setFormData] = useState({
     name: '',
-    username: '', // Thêm trường username
-    phone: '',
+    username: '',     phone: '',
     email: '',
     birthDate: '',
     password: '',
@@ -14,8 +13,7 @@ const Register = () => {
   const navigate = useNavigate();
   const [errors, setErrors] = useState({
     name: '',
-    username: '', // Thêm lỗi cho username
-    phone: '',
+    username: '',     phone: '',
     email: '',
     birthDate: '',
     password: '',
@@ -34,20 +32,17 @@ const Register = () => {
     let formErrors = {};
     let isValid = true;
 
-    // Kiểm tra họ tên
-    if (!formData.name) {
+        if (!formData.name) {
       formErrors.name = 'Vui lòng nhập họ và tên';
       isValid = false;
     }
 
-    // Kiểm tra username
-    if (!formData.username) {
+        if (!formData.username) {
       formErrors.username = 'Vui lòng nhập tên tài khoản';
       isValid = false;
     }
 
-    // Kiểm tra số điện thoại
-    if (!formData.phone) {
+        if (!formData.phone) {
       formErrors.phone = 'Vui lòng nhập số điện thoại';
       isValid = false;
     } else if (!/^\d{10}$/.test(formData.phone)) {
@@ -55,14 +50,12 @@ const Register = () => {
       isValid = false;
     }
 
-    // Kiểm tra mật khẩu
-    if (!formData.password) {
+        if (!formData.password) {
       formErrors.password = 'Vui lòng nhập mật khẩu';
       isValid = false;
     }
 
-    // Kiểm tra xác nhận mật khẩu
-    if (formData.password !== formData.confirmPassword) {
+        if (formData.password !== formData.confirmPassword) {
       formErrors.confirmPassword = 'Mật khẩu xác nhận không khớp';
       isValid = false;
     }
@@ -151,7 +144,7 @@ const Register = () => {
           <div className="box-input">
             <input
               type="email"
-              placeholder="Nhập email(không bắt buộc)"
+              placeholder="Nhập email"
               maxLength={50}
               name="email"
               value={formData.email}
@@ -168,6 +161,7 @@ const Register = () => {
               value={formData.birthDate}
               onChange={handleChange}
               className="box-input__main"
+              required
             />
             <label className="box-input_label">Ngày Sinh</label>
             {errors.birthDate && <div className="box-input_err-validate">{errors.birthDate}</div>}

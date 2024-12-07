@@ -11,13 +11,11 @@ const ListProduct = () => {
   const [notification, setNotification] = useState('');
   const navigate = useNavigate(); 
   const handleBuyNow = (product) => {
-    const userId = localStorage.getItem('iduser'); // Lấy userId từ localStorage
-    
+    const userId = localStorage.getItem('iduser');     
     if (!userId) {
       setNotification('Bạn cần đăng nhập để mua sản phẩm!');
       navigate('/login');
-      return; // Dừng nếu user chưa đăng nhập
-    }
+      return;     }
   
     axios.post('http://localhost:5000/api/cart/add', {
       userId,
@@ -37,8 +35,7 @@ const ListProduct = () => {
   
   
   
-  // Khi không có state (nhấn "Tất Cả Sản Phẩm"), ta lấy tất cả sản phẩm từ API
-  useEffect(() => {
+    useEffect(() => {
     if (!location.state) {
       axios.get('http://localhost:5000/api/products')
         .then(response => {
@@ -50,26 +47,19 @@ const ListProduct = () => {
     }
   }, [location.state]);
 
-  // Hàm sắp xếp theo khuyến mãi
-  // Hàm sắp xếp theo khuyến mãi
-const sortByPromotion = () => {
+    const sortByPromotion = () => {
   const sortedProducts = [...products].sort((a, b) => {
-    // Nếu discountprice = -1, coi như sản phẩm không có khuyến mãi
-    const promotionA = a.discountprice === -1 ? -1 : (1 - a.discountprice / a.price) * 100;
+        const promotionA = a.discountprice === -1 ? -1 : (1 - a.discountprice / a.price) * 100;
     const promotionB = b.discountprice === -1 ? -1 : (1 - b.discountprice / b.price) * 100;
     
-    // Nếu cả 2 sản phẩm đều không có khuyến mãi, thì sắp xếp theo giá
-    if (promotionA === -1 && promotionB === -1) {
-      return b.price - a.price; // Sắp xếp theo giá
-    }
+        if (promotionA === -1 && promotionB === -1) {
+      return b.price - a.price;     }
 
-    return promotionB - promotionA; // Sắp xếp theo khuyến mãi
-  });
+    return promotionB - promotionA;   });
   setProducts(sortedProducts);
 };
 
-  // Hàm sắp xếp theo giá từ thấp đến cao
-  const sortByPriceLowToHigh = () => {
+    const sortByPriceLowToHigh = () => {
     const sortedProducts = [...products].sort((a, b) => {
       const priceA = a.discountprice === -1 ? a.price : a.discountprice;
       const priceB = b.discountprice === -1 ? b.price : b.discountprice;
@@ -78,8 +68,7 @@ const sortByPromotion = () => {
     setProducts(sortedProducts);
   };
 
-  // Hàm sắp xếp theo giá từ cao đến thấp
-  const sortByPriceHighToLow = () => {
+    const sortByPriceHighToLow = () => {
     const sortedProducts = [...products].sort((a, b) => {
       const priceA = a.discountprice === -1 ? a.price : a.discountprice;
       const priceB = b.discountprice === -1 ? b.price : b.discountprice;
@@ -88,10 +77,8 @@ const sortByPromotion = () => {
     setProducts(sortedProducts);
   };
 
-  // Hàm xử lý thay đổi lựa chọn sắp xếp
-  const handleSortChange = (option) => {
-    setSortOption(option); // Cập nhật lựa chọn sắp xếp
-    if (option === 'promotion') {
+    const handleSortChange = (option) => {
+    setSortOption(option);     if (option === 'promotion') {
       sortByPromotion();
     } else if (option === 'priceLowToHigh') {
       sortByPriceLowToHigh();
@@ -100,13 +87,11 @@ const sortByPromotion = () => {
     }
   };
 
-  // Mặc định sắp xếp theo khuyến mãi khi trang được tải lần đầu
-  useEffect(() => {
+    useEffect(() => {
     if (sortOption === 'promotion') {
       sortByPromotion();
     }
-  }, [sortOption]); // Chỉ gọi lại khi lựa chọn sắp xếp thay đổi
-
+  }, [sortOption]); 
   return (
     <div>
       <div className="filter-sort">

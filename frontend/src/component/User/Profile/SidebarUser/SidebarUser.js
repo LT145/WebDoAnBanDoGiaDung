@@ -1,24 +1,18 @@
 import React from 'react';
 import './SidebarUser.css';
-import { useNavigate } from 'react-router-dom';  // Import useNavigate để điều hướng
-
+import { useNavigate } from 'react-router-dom';  
 const SidebarUser = () => {
-  const navigate = useNavigate();  // Khởi tạo navigate từ useNavigate
-
-  // Hàm xử lý đăng xuất
-  const handleLogout = () => {
-    // Xóa token và thông tin người dùng trong localStorage
-    localStorage.removeItem('token');
+  const navigate = useNavigate();  
+    const handleLogout = () => {
+        localStorage.removeItem('token');
     localStorage.removeItem('username');
     localStorage.removeItem('role');
 
-    // Điều hướng về trang login
-    navigate('/login');
+        navigate('/login');
     window.location.reload();
   };
 
-  // Lấy role từ localStorage
-  const role = localStorage.getItem('role');
+    const role = localStorage.getItem('role');
 
   return (
     <div className="Sidebar">

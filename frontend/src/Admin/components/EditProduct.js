@@ -3,8 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const EditProduct = () => {
-  const { id } = useParams(); // Lấy ID sản phẩm từ URL
-  const navigate = useNavigate();
+  const { id } = useParams();   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [categories, setCategories] = useState([]);
   const [product, setProduct] = useState({
@@ -15,20 +14,16 @@ const EditProduct = () => {
     discountPrice: -1,
     img: "",
   });
-  const [isDiscount, setIsDiscount] = useState(false); // Kiểm tra có khuyến mãi không
-
-  // Lấy danh mục và thông tin sản phẩm
-  useEffect(() => {
+  const [isDiscount, setIsDiscount] = useState(false); 
+    useEffect(() => {
     const fetchData = async () => {
       try {
-        // Lấy danh mục
-        const { data: categoryData } = await axios.get(
+                const { data: categoryData } = await axios.get(
           "http://localhost:5000/api/categories"
         );
         setCategories(categoryData);
     
-        // Lấy sản phẩm theo ID
-        const { data: productData } = await axios.get(
+                const { data: productData } = await axios.get(
           `http://localhost:5000/api/products/findid/${id}`
         );
     
@@ -37,9 +32,7 @@ const EditProduct = () => {
           return navigate("/productmanagement");
         }
     
-        // Giả sử productData là một mảng, bạn lấy phần tử đầu tiên
-        const product = productData[0]; // Chọn phần tử đầu tiên trong mảng
-    
+                const product = productData[0];     
         setProduct({
           name: product.name || "",
           quantity: product.quantity || 0,
@@ -49,8 +42,7 @@ const EditProduct = () => {
           img: product.img || "",
         });
         setIsDiscount(product.discountprice > 0);
-        setLoading(false); // Đảm bảo setLoading(false) sau khi tất cả dữ liệu đã được nạp
-      } catch (error) {
+        setLoading(false);       } catch (error) {
         console.error("Lỗi khi tải dữ liệu:", error);
         alert("Không thể tải dữ liệu sản phẩm.");
         setLoading(false);
@@ -60,13 +52,11 @@ const EditProduct = () => {
   
     fetchData();
   }, [id, navigate]);
-  // Xử lý submit form
-  const handleSubmit = async (e) => {
+    const handleSubmit = async (e) => {
     e.preventDefault();
   
     try {
-      // Tạo FormData cho sản phẩm
-      const formData = new FormData();
+            const formData = new FormData();
       formData.append("name", product.name);
       formData.append("quantity", product.quantity);
       formData.append("categoryId", product.categoryId);
@@ -75,17 +65,14 @@ const EditProduct = () => {
       if (isDiscount && product.discountPrice > 0) {
         formData.append("discountPrice", product.discountPrice);
       } else {
-        formData.append("discountPrice", -1); // Nếu không khuyến mãi, đặt giá trị -1
-      }
+        formData.append("discountPrice", -1);       }
   
-      // Nếu có ảnh mới, thêm ảnh vào formData
-      const imageFile = e.target["product-image"].files[0];
+            const imageFile = e.target["product-image"].files[0];
       if (imageFile) {
         formData.append("product-image", imageFile);
       }
   
-      // Gửi yêu cầu cập nhật sản phẩm
-      await axios.put(`http://localhost:5000/api/products/${id}`, formData, {
+            await axios.put(`http://localhost:5000/api/products/${id}`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

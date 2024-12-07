@@ -9,7 +9,7 @@ const usersFilePath = path.join(__dirname, './database/user.json');
 
 const getUsers = () => {
   if (!fs.existsSync(usersFilePath)) {
-    return [];  // Trả về mảng rỗng nếu file không tồn tại
+    return [];
   }
   const usersData = fs.readFileSync(usersFilePath, 'utf-8');
   return JSON.parse(usersData);
@@ -34,25 +34,25 @@ router.post('/login', (req, res) => {
   }
 
   if (password === user.password) {
-    const token = jwt.sign({ 
-      id: user.id, 
-      name: user.name,
-      username: user.username, 
-      role: user.role, 
-      phone: user.phone,   
-      email: user.email,   
-      dob: user.dob        
-    }, JWT_SECRET, { expiresIn: '1h' });
-    
-    return res.json({ 
+    const token = jwt.sign({
       id: user.id,
-      token, 
-      username: user.username, 
       name: user.name,
-      role: user.role, 
-      phone: user.phone, 
-      email: user.email, 
-      dob: user.dob 
+      username: user.username,
+      role: user.role,
+      phone: user.phone,
+      email: user.email,
+      dob: user.dob
+    }, JWT_SECRET, { expiresIn: '1h' });
+
+    return res.json({
+      id: user.id,
+      token,
+      username: user.username,
+      name: user.name,
+      role: user.role,
+      phone: user.phone,
+      email: user.email,
+      dob: user.dob
     });
   } else {
     return res.status(401).json({ message: 'Sai Tài Khoản Hoặc Mật Khẩu' });
@@ -77,7 +77,7 @@ router.post('/register', (req, res) => {
     phone,
     email,
     dob: birthDate,
-    status: 1 
+    status: 1
   };
 
   users.push(newUser);
@@ -90,13 +90,11 @@ router.get('/users', (req, res) => {
   res.json(users);
 });
 router.put('/users/:id', (req, res) => {
-  const userId = parseInt(req.params.id, 10);  // Chuyển ID từ chuỗi thành số
+  const userId = parseInt(req.params.id, 10);
   if (isNaN(userId)) {
     return res.status(400).json({ message: 'ID người dùng không hợp lệ' });
   }
-
-  // Lấy thông tin người dùng từ body
-  const { username, name, email, phone, dob, password } = req.body; 
+  const { username, name, email, phone, dob, password } = req.body;
 
   const users = getUsers();
   const userIndex = users.findIndex(user => user.id === userId);
@@ -105,31 +103,28 @@ router.put('/users/:id', (req, res) => {
     return res.status(404).json({ message: 'Người dùng không tồn tại' });
   }
 
-  console.log('Updating user:', users[userIndex]);  // Log trước khi cập nhật
+  console.log('Updating user:', users[userIndex]);
   console.log('New data:', { username, name, email, phone, dob, password });
 
-  // Cập nhật thông tin người dùng
-  users[userIndex] = { 
-    ...users[userIndex], 
-    username, 
-    name, 
-    email, 
-    phone, 
-    dob, 
-    password: password || users[userIndex].password,  // Nếu không có password mới, giữ nguyên
+  users[userIndex] = {
+    ...users[userIndex],
+    username,
+    name,
+    email,
+    phone,
+    dob,
+    password: password || users[userIndex].password,
   };
-  
-  // Lưu lại thông tin vào file JSON
-  saveUsers(users); 
 
-  console.log('Updated user:', users[userIndex]);  // Log sau khi cập nhật
+  saveUsers(users);
 
+  console.log('Updated user:', users[userIndex]);
   return res.json({ message: 'Thông tin người dùng đã được cập nhật', user: users[userIndex] });
 });
 
 
 router.put('/users/:id/status', (req, res) => {
-  const userId = parseInt(req.params.id); 
+  const userId = parseInt(req.params.id);
   const { status } = req.body;
 
   let users = getUsers();
@@ -137,7 +132,7 @@ router.put('/users/:id/status', (req, res) => {
 
   if (userIndex !== -1) {
     users[userIndex].status = status;
-    saveUsers(users); 
+    saveUsers(users);
     return res.json({ message: 'Cập nhật trạng thái thành công', user: users[userIndex] });
   } else {
     return res.status(404).json({ message: 'Không tìm thấy người dùng' });
@@ -175,7 +170,7 @@ router.post('/registeradmin', (req, res) => {
     phone,
     email,
     dob: birthDate,
-    status: 1 
+    status: 1
   };
 
   users.push(newUser);
@@ -184,9 +179,8 @@ router.post('/registeradmin', (req, res) => {
 });
 router.get('/check-email', (req, res) => {
   const { email } = req.query;
-  const users = getUsers(); // Giả sử hàm này trả về danh sách users
+  const users = getUsers();
 
-  // Kiểm tra xem email có trong danh sách users không
   const userExists = users.some(user => user.email === email);
 
   if (userExists) {

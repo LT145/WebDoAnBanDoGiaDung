@@ -1,8 +1,7 @@
 import React from 'react';
 import SidebarUser from '../component/User/Profile/SidebarUser/SidebarUser';
 import InfoUser from '../component/User/Profile/InfoUser/InfoUser';
-import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom'; // Import Navigate để chuyển hướng
-import HistoryOrder from '../component/User/Profile/HistoryOrder/HistoryOrder';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom'; import HistoryOrder from '../component/User/Profile/HistoryOrder/HistoryOrder';
 import OrderDetails from '../component/User/Profile/DetailsOrder/DetailsOrder';
 const Profile = () => {
 

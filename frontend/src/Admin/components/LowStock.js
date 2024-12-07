@@ -8,15 +8,13 @@ const LowStock = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const navigate = useNavigate();
 
-  // Gọi API để lấy danh sách sản phẩm và danh mục từ backend
-  useEffect(() => {
+    useEffect(() => {
     const fetchProducts = async () => {
       try {
         const response = await axios.get('http://localhost:5000/api/products');
         const updatedData = response.data.map(product => ({
           ...product,
-          active: product.active || 'Sẵn Hàng', // Thiết lập giá trị mặc định cho active nếu chưa có
-        }));
+          active: product.active || 'Sẵn Hàng',         }));
         setProducts(updatedData);
       } catch (error) {
         console.error('Lỗi khi lấy dữ liệu sản phẩm:', error);
@@ -36,23 +34,18 @@ const LowStock = () => {
     fetchCategories();
   }, []);
 
-  // Hàm tìm kiếm
-  const handleSearchChange = (e) => {
+    const handleSearchChange = (e) => {
     setSearchTerm(e.target.value);
   };
 
-  // Lọc danh sách sản phẩm theo giá trị tìm kiếm và chỉ lấy những sản phẩm có số lượng < 5
-  const filteredProducts = products.filter(product => {
+    const filteredProducts = products.filter(product => {
     const searchValue = searchTerm.toLowerCase();
-    // Đảm bảo kiểm tra số lượng < 5 và tìm kiếm theo tên, danh mục, và giá trị giảm giá
-    return (
+        return (
       (product.name && product.name.toLowerCase().includes(searchValue)) ||
       (product.category && product.category.toLowerCase().includes(searchValue)) ||
       (product.discountprice && product.discountprice.toString().includes(searchValue))
-    ) && product.quantity < 5; // Đảm bảo lọc sản phẩm có số lượng dưới 5
-  });
-  // Lấy tên danh mục cho từng sản phẩm
-  const getCategoryName = (categoryId) => {
+    ) && product.quantity < 5;   });
+    const getCategoryName = (categoryId) => {
     const category = categories.find(cat => cat.id === categoryId);
     return category ? category.name : 'Không Xác Định';
   };
@@ -77,8 +70,8 @@ const LowStock = () => {
               <i className="fa-solid fa-box" />
               <span className="text">Quản Lý Sản Phẩm</span>
             </div>
-            <button className="btn-register-product" onClick={() => navigate('addproduct')}>Thêm Sản Phẩm</button>
-            <button className="btn-register-product" onClick={() => navigate('stockimport')}>Nhập Hàng</button>
+            <button className="btn-register-product" onClick={() => navigate('/admin/products/addproduct')}>Thêm Sản Phẩm</button>
+            <button className="btn-register-product" onClick={() => navigate('/admin/products/stockimport')}>Nhập Hàng</button>
           </div>
           {/* Bảng thông tin sản phẩm */}
           <div className="product-table">

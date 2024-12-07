@@ -2,16 +2,14 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const Stockimport = () => {
-  const [categories, setCategories] = useState([]); // Danh sách danh mục
-  const [selectedCategory, setSelectedCategory] = useState(''); // Danh mục được chọn
-  const [quantity, setQuantity] = useState(0); // Số lượng nhập
-  const [newQuantity, setNewQuantity] = useState(0); // Số lượng sau nhập
-  const [searchTerm, setSearchTerm] = useState(''); // Từ khóa tìm kiếm sản phẩm
-  const [productSuggestions, setProductSuggestions] = useState([]); // Gợi ý sản phẩm
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false); // Trạng thái của dropdown
-  const [productDetails, setProductDetails] = useState(null); // Thông tin chi tiết sản phẩm
-
-  // Lấy danh mục sản phẩm khi component mount
+  const [categories, setCategories] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState('');
+  const [quantity, setQuantity] = useState(0);
+  const [newQuantity, setNewQuantity] = useState(0);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [productSuggestions, setProductSuggestions] = useState([]);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [productDetails, setProductDetails] = useState(null);
   useEffect(() => {
     const fetchCategories = async () => {
       try {
@@ -25,14 +23,12 @@ const Stockimport = () => {
     fetchCategories();
   }, []);
 
-  // Lấy gợi ý sản phẩm khi người dùng nhập tên sản phẩm
-// Lấy gợi ý sản phẩm khi người dùng nhập tên sản phẩm
-useEffect(() => {
+  useEffect(() => {
     const fetchProductSuggestions = async () => {
       if (searchTerm.length > 0) {
         try {
           const response = await axios.post('http://localhost:5000/api/products/search', {
-            name: searchTerm,  // Đảm bảo tên được gửi qua body của request
+            name: searchTerm,
           });
           setProductSuggestions(response.data);
         } catch (error) {
@@ -42,68 +38,56 @@ useEffect(() => {
         setProductSuggestions([]);
       }
     };
-  
+
     fetchProductSuggestions();
   }, [searchTerm]);
-  
-  // Xử lý khi người dùng chọn sản phẩm từ danh sách gợi ý
-const handleSelectProduct = async (productName) => {
-  setSearchTerm(productName); // Cập nhật từ khóa tìm kiếm
-  setIsDropdownOpen(false); // Đóng dropdown
 
-  try {
-    const response = await axios.get(`http://localhost:5000/api/products/findname/${productName}`);
-    const product = response.data;
+  const handleSelectProduct = async (productName) => {
+    setSearchTerm(productName); setIsDropdownOpen(false);
+    try {
+      const response = await axios.get(`http://localhost:5000/api/products/findname/${productName}`);
+      const product = response.data;
 
-    if (product) {
-      setProductDetails(product); // Lưu tất cả thông tin của sản phẩm vào trạng thái
-      setSelectedCategory(product.categoryId); // Cập nhật categoryId của sản phẩm
-      setNewQuantity(product.quantity); // Số lượng ban đầu của sản phẩm
-    } else {
-      console.error('Không tìm thấy sản phẩm');
+      if (product) {
+        setProductDetails(product); setSelectedCategory(product.categoryId); setNewQuantity(product.quantity);
+      } else {
+        console.error('Không tìm thấy sản phẩm');
+      }
+    } catch (error) {
+      console.error('Lỗi khi lấy thông tin sản phẩm:', error);
     }
-  } catch (error) {
-    console.error('Lỗi khi lấy thông tin sản phẩm:', error);
-  }
-};
+  };
 
-  // Cập nhật số lượng nhập và tính toán số lượng sau khi nhập
   const handleQuantityChange = (e) => {
     const newQuantityValue = Math.max(0, Number(e.target.value));
     setQuantity(newQuantityValue);
     if (productDetails) {
-      setNewQuantity(productDetails.quantity + newQuantityValue); // Tính số lượng sau nhập
+      setNewQuantity(productDetails.quantity + newQuantityValue);
     }
   };
 
-  // Xử lý submit form để gửi dữ liệu lên server
-// Cập nhật lại hàm handleSubmit để chỉ cập nhật số lượng
-// Cập nhật lại hàm handleSubmit để chỉ thay đổi số lượng
-const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     if (!productDetails) {
       alert('Không có sản phẩm nào để cập nhật');
       return;
     }
-  
-    // Lấy thông tin sản phẩm cũ
+
     const updatedProduct = {
-      ...productDetails, // Giữ nguyên thông tin cũ
-      quantity: newQuantity, // Chỉ cập nhật số lượng
+      ...productDetails, quantity: newQuantity,
     };
-  
+
     try {
-      // Gửi dữ liệu sản phẩm đã cập nhật (chỉ thay đổi số lượng)
       const response = await axios.put(`http://localhost:5000/api/products/${updatedProduct.id}`, updatedProduct);
-      alert(response.data.message); // Hiển thị thông báo khi cập nhật thành công
+      alert(response.data.message);
     } catch (error) {
       console.error('Lỗi khi cập nhật số lượng sản phẩm:', error);
       alert('Cập nhật số lượng sản phẩm thất bại. Vui lòng thử lại.');
     }
   };
-  
-  
+
+
 
   return (
     <section className="dashboard">

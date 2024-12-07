@@ -3,8 +3,7 @@ import { useNavigate } from 'react-router-dom';
 const RegisterAdmin = () => {
   const [formData, setFormData] = useState({
     name: '',
-    username: '', // Thêm trường username
-    phone: '',
+    username: '',     phone: '',
     email: '',
     birthDate: '',
     password: '',
@@ -13,8 +12,7 @@ const RegisterAdmin = () => {
   const navigate = useNavigate();
   const [errors, setErrors] = useState({
     name: '',
-    username: '', // Thêm lỗi cho username
-    phone: '',
+    username: '',     phone: '',
     email: '',
     birthDate: '',
     password: '',
@@ -33,20 +31,17 @@ const RegisterAdmin = () => {
     let formErrors = {};
     let isValid = true;
 
-    // Kiểm tra họ tên
-    if (!formData.name) {
+        if (!formData.name) {
       formErrors.name = 'Vui lòng nhập họ và tên';
       isValid = false;
     }
 
-    // Kiểm tra username
-    if (!formData.username) {
+        if (!formData.username) {
       formErrors.username = 'Vui lòng nhập tên tài khoản';
       isValid = false;
     }
 
-    // Kiểm tra số điện thoại
-    if (!formData.phone) {
+        if (!formData.phone) {
       formErrors.phone = 'Vui lòng nhập số điện thoại';
       isValid = false;
     } else if (!/^\d{10}$/.test(formData.phone)) {
@@ -61,14 +56,12 @@ const RegisterAdmin = () => {
     isValid = false;
   }
 
-    // Kiểm tra mật khẩu
-    if (!formData.password) {
+        if (!formData.password) {
       formErrors.password = 'Vui lòng nhập mật khẩu';
       isValid = false;
     }
 
-    // Kiểm tra xác nhận mật khẩu
-    if (formData.password !== formData.confirmPassword) {
+        if (formData.password !== formData.confirmPassword) {
       formErrors.confirmPassword = 'Mật khẩu xác nhận không khớp';
       isValid = false;
     }

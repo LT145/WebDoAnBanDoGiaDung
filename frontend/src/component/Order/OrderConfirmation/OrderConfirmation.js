@@ -2,21 +2,17 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './OrderConfirmation.css'
 const OrderConfirmation = () => {
-  const [countdown, setCountdown] = useState(5); // Đếm ngược 5 giây
-  const navigate = useNavigate();
+  const [countdown, setCountdown] = useState(5);   const navigate = useNavigate();
 
-  // Khi countdown thay đổi, giảm dần và chuyển hướng sau khi hết thời gian
-  useEffect(() => {
+    useEffect(() => {
     if (countdown === 0) {
-      navigate('/profile'); // Chuyển hướng đến trang profile
-    }
+      navigate('/profile');     }
 
     const timer = setInterval(() => {
       setCountdown((prev) => prev - 1);
     }, 1000);
 
-    // Dọn dẹp khi component unmount hoặc countdown đến 0
-    return () => clearInterval(timer);
+        return () => clearInterval(timer);
   }, [countdown, navigate]);
 
   return (

@@ -2,21 +2,16 @@ import React, { useState, useEffect } from 'react';
 
 const User = () => {
   const [customers, setCustomers] = useState([]);
-  const [searchTerm, setSearchTerm] = useState(""); // State để lưu giá trị tìm kiếm
-
-  // Gọi API để lấy danh sách người dùng từ backend
-  useEffect(() => {
+  const [searchTerm, setSearchTerm] = useState(""); 
+    useEffect(() => {
     const fetchUsers = async () => {
       try {
         const response = await fetch('http://localhost:5000/api/users');
         const data = await response.json();
-        // Lọc ra những người có role là "user"
-        const userRoleData = data.filter(user => user.role === 'user');
-        // Chuyển đổi trạng thái từ 0,1 thành "Hoạt Động" hoặc "Khóa"
-        const updatedData = userRoleData.map(user => ({
+                const userRoleData = data.filter(user => user.role === 'user');
+                const updatedData = userRoleData.map(user => ({
           ...user,
-          status: user.status === 1 ? 'Hoạt Động' : 'Khóa', // Convert 1 to "Hoạt Động" and 0 to "Khóa"
-        }));
+          status: user.status === 1 ? 'Hoạt Động' : 'Khóa',         }));
         setCustomers(updatedData);
       } catch (error) {
         console.error('Lỗi khi lấy dữ liệu người dùng:', error);
@@ -26,14 +21,11 @@ const User = () => {
     fetchUsers();
   }, []);
 
-  // Hàm cập nhật trạng thái của khách hàng
-  const toggleStatus = async (index, userId) => {
+    const toggleStatus = async (index, userId) => {
     const currentStatus = customers[index].status;
-    const newStatus = currentStatus === 'Hoạt Động' ? 0 : 1; // Dùng 0 và 1 thay vì "Hoạt Động" và "Khóa"
-
+    const newStatus = currentStatus === 'Hoạt Động' ? 0 : 1; 
     try {
-      // Gửi yêu cầu cập nhật trạng thái đến backend
-      const response = await fetch(`http://localhost:5000/api/users/${userId}/status`, {
+            const response = await fetch(`http://localhost:5000/api/users/${userId}/status`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -42,10 +34,8 @@ const User = () => {
       });
 
       if (response.ok) {
-        // Cập nhật trạng thái trong frontend nếu thành công
-        const updatedCustomers = [...customers];
-        updatedCustomers[index].status = newStatus === 1 ? 'Hoạt Động' : 'Khóa'; // Convert 1 và 0 về trạng thái hiển thị
-        setCustomers(updatedCustomers);
+                const updatedCustomers = [...customers];
+        updatedCustomers[index].status = newStatus === 1 ? 'Hoạt Động' : 'Khóa';         setCustomers(updatedCustomers);
       } else {
         console.error('Lỗi khi cập nhật trạng thái');
       }
@@ -54,8 +44,7 @@ const User = () => {
     }
   };
 
-  // Lọc khách hàng theo từ khóa tìm kiếm
-  const filteredCustomers = customers.filter(customer => {
+    const filteredCustomers = customers.filter(customer => {
     const searchValue = searchTerm.toLowerCase();
     return (
       (customer.name && customer.name.toLowerCase().includes(searchValue)) ||
@@ -74,8 +63,7 @@ const User = () => {
             type="text"
             placeholder="Search...."
             value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)} // Cập nhật giá trị tìm kiếm
-          />
+            onChange={(e) => setSearchTerm(e.target.value)}           />
         </div>
       </div>
       <div className="dash-content">

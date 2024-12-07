@@ -2,39 +2,29 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const HistoryOrder = () => {
-  const [orders, setOrders] = useState([]); // Lưu danh sách đơn hàng gốc
-  const [filteredOrders, setFilteredOrders] = useState([]); // Lưu danh sách đã lọc hoặc sắp xếp
-  const userId = localStorage.getItem('iduser'); // Thay giá trị này bằng userId thực tế (có thể lấy từ localStorage hoặc context)
-  const navigate = useNavigate();
+  const [orders, setOrders] = useState([]);   const [filteredOrders, setFilteredOrders] = useState([]);   const userId = localStorage.getItem('iduser');   const navigate = useNavigate();
 
-  // Fetch dữ liệu từ API
-  useEffect(() => {
+    useEffect(() => {
     if (userId) {
       fetch(`http://localhost:5000/api/orders/user/${userId}`)
         .then((response) => response.json())
         .then((data) => {
-          setOrders(data); // Lưu toàn bộ đơn hàng của user
-          setFilteredOrders(data); // Hiển thị danh sách đã lọc (mặc định là tất cả)
-        })
+          setOrders(data);           setFilteredOrders(data);         })
         .catch((error) => console.error('Lỗi khi tải dữ liệu:', error));
     }
   }, [userId]);
 
-  // Lọc đơn hàng đã hủy
-  const filterCancelledOrders = () => {
+    const filterCancelledOrders = () => {
     const cancelledOrders = orders.filter((order) => order.status === 'Đã hủy');
     setFilteredOrders(cancelledOrders);
   };
 
-  // Sắp xếp đơn hàng theo ngày gần nhất
-  const sortByNewest = () => {
+    const sortByNewest = () => {
     const sortedOrders = [...orders].sort((a, b) => {
       const dateA = new Date(a.createdAt);
       const dateB = new Date(b.createdAt);
-      return dateB - dateA; // Sắp xếp từ ngày mới nhất
-    });
-    setFilteredOrders(sortedOrders); // Cập nhật filteredOrders sau khi sắp xếp
-  };
+      return dateB - dateA;     });
+    setFilteredOrders(sortedOrders);   };
 
   return (
     <div className="dash-content">

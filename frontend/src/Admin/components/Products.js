@@ -8,15 +8,13 @@ const ProductManagement = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const navigate = useNavigate();
 
-  // Gọi API để lấy danh sách sản phẩm và danh mục từ backend
-  useEffect(() => {
+    useEffect(() => {
     const fetchProducts = async () => {
       try {
         const response = await axios.get('http://localhost:5000/api/products');
         const updatedData = response.data.map(product => ({
           ...product,
-          active: product.active || 'Sẵn Hàng', // Thiết lập giá trị mặc định cho active nếu chưa có
-        }));
+          active: product.active || 'Sẵn Hàng',         }));
         setProducts(updatedData);
       } catch (error) {
         console.error('Lỗi khi lấy dữ liệu sản phẩm:', error);
@@ -36,13 +34,11 @@ const ProductManagement = () => {
     fetchCategories();
   }, []);
 
-  // Hàm tìm kiếm
-  const handleSearchChange = (e) => {
+    const handleSearchChange = (e) => {
     setSearchTerm(e.target.value);
   };
 
-  // Lọc danh sách sản phẩm theo giá trị tìm kiếm
-  const filteredProducts = products.filter(product => {
+    const filteredProducts = products.filter(product => {
     const searchValue = searchTerm.toLowerCase();
     return (
       (product.name && product.name.toLowerCase().includes(searchValue)) ||
@@ -51,20 +47,16 @@ const ProductManagement = () => {
     );
   });
 
-  // Cập nhật trạng thái sản phẩm (Sẵn Hàng <-> Ngừng Kinh Doanh)
-  const updateStatus = async (index, productId, currentStatus) => {
+    const updateStatus = async (index, productId, currentStatus) => {
     const newStatus = currentStatus === 'Sẵn Hàng' ? 'Ngừng Kinh Doanh' : 'Sẵn Hàng';
 
     try {
       const response = await axios.put(`http://localhost:5000/api/products/${productId}/status`, {
-        active: newStatus, // Gửi trạng thái mới
-      });
+        active: newStatus,       });
 
       if (response.status === 200) {
         const updatedProducts = [...products];
-        updatedProducts[index].active = newStatus; // Cập nhật trạng thái trong danh sách sản phẩm
-        setProducts(updatedProducts); // Cập nhật lại state
-      } else {
+        updatedProducts[index].active = newStatus;         setProducts(updatedProducts);       } else {
         console.error('Lỗi khi cập nhật trạng thái sản phẩm');
       }
     } catch (error) {
@@ -72,8 +64,7 @@ const ProductManagement = () => {
     }
   };
 
-  // Lấy tên danh mục cho từng sản phẩm
-  const getCategoryName = (categoryId) => {
+    const getCategoryName = (categoryId) => {
     const category = categories.find(cat => cat.id === categoryId);
     return category ? category.name : 'Không Xác Định';
   };
@@ -130,14 +121,12 @@ const ProductManagement = () => {
                     <td>
   <button
     className="btn-toggle"
-    onClick={() => updateStatus(index, product.id, product.active)} // Cập nhật trạng thái khi nhấn
-  >
+    onClick={() => updateStatus(index, product.id, product.active)}   >
     {product.active === 'Sẵn Hàng' ? 'Ngừng Kinh Doanh' : 'Mở Lại'}
   </button>
   <button
     className="btn-edit"
-    onClick={() => navigate(`editproduct/${product.id}`)} // Điều hướng đến trang chỉnh sửa
-  >
+    onClick={() => navigate(`editproduct/${product.id}`)}   >
     Sửa
   </button>
 </td>

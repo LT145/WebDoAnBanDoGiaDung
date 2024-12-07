@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 const ResetPassword = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const email = location.state?.email;  // Lấy email từ state được truyền qua navigate
-  
+  const email = location.state?.email;    
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');

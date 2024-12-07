@@ -53,6 +53,7 @@
 
 .menu-items li{
     list-style: none;
+    cursor: pointer;
 }
 
 .menu-items li a{

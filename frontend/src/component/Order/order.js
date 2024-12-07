@@ -22,10 +22,8 @@ const Order = () => {
     password: '',
   });
 
-  const [selectedItems, setSelectedItems] = useState(location.state?.selectedItems || []); // Retrieve selected items
-
-  // Handle province change
-  const handleProvinceChange = (e) => {
+  const [selectedItems, setSelectedItems] = useState(location.state?.selectedItems || []); 
+    const handleProvinceChange = (e) => {
     const provinceCode = e.target.value;
     setSelectedProvince(provinceCode);
     setDistricts(getDistrictsByProvinceCode(provinceCode)); 
@@ -33,15 +31,13 @@ const Order = () => {
     setSelectedDistrict('');
   };
 
-  // Handle district change
-  const handleDistrictChange = (e) => {
+    const handleDistrictChange = (e) => {
     const districtCode = e.target.value;
     setSelectedDistrict(districtCode);
     setWards(getWardsByDistrictCode(districtCode));
   };
 
-  // Calculate total price
-  const calculateTotal = () =>
+    const calculateTotal = () =>
     selectedItems.reduce((total, item) => {
       const price = item.productDetails?.discountprice && item.productDetails.discountprice !== -1
         ? item.productDetails.discountprice
@@ -49,8 +45,7 @@ const Order = () => {
       return total + price * item.quantity;
     }, 0);
 
-  // Send order data to backend
-  const placeOrder = async () => {
+    const placeOrder = async () => {
     const wardName = wards.find(ward => ward.code === document.getElementById('ward').value)?.name || '';
     const districtName = districts.find(district => district.code === selectedDistrict)?.name || '';
     const provinceName = provinces.find(province => province.code === selectedProvince)?.name || '';
@@ -255,8 +250,7 @@ const Order = () => {
           </p>
           <button
             className="btn-action"
-            onClick={placeOrder} // Trigger order placement
-          >
+            onClick={placeOrder}           >
             Mua ngay
           </button>
         </div>

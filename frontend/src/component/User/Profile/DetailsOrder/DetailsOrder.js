@@ -8,8 +8,7 @@ const OrderDetails = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const orderId = location.state?.orderId; // Lấy orderId từ state truyền qua
-
+  const orderId = location.state?.orderId; 
   useEffect(() => {
     if (!orderId) {
       setError("Không tìm thấy mã đơn hàng.");
@@ -26,8 +25,7 @@ const OrderDetails = () => {
           throw new Error("Không thể lấy thông tin đơn hàng.");
         }
         const data = await response.json();
-        setOrder(data); // Lưu chi tiết đơn hàng
-      } catch (err) {
+        setOrder(data);       } catch (err) {
         setError(err.message);
       } finally {
         setLoading(false);
@@ -67,8 +65,7 @@ const OrderDetails = () => {
       const data = await response.json();
       console.log(data.message);
       alert("Đơn hàng đã được hủy thành công!");
-      navigate("/profile/history-order"); // Điều hướng về danh sách đơn hàng (nếu cần)
-    } catch (err) {
+      navigate("/profile/history-order");     } catch (err) {
       alert(`Lỗi: ${err.message}`);
     }
   };

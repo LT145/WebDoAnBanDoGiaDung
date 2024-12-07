@@ -3,22 +3,17 @@ import { useNavigate } from 'react-router-dom';
 
 const Adminad = () => {
   const [admins, setAdmins] = useState([]);
-  const [searchTerm, setSearchTerm] = useState(''); // Thêm state cho giá trị tìm kiếm
-  const navigate = useNavigate();
+  const [searchTerm, setSearchTerm] = useState('');   const navigate = useNavigate();
 
-  // Gọi API để lấy danh sách người dùng từ backend
-  useEffect(() => {
+    useEffect(() => {
     const fetchAdmins = async () => {
       try {
         const response = await fetch('http://localhost:5000/api/users');
         const data = await response.json();
-        // Lọc ra những người có role là "admin"
-        const adminRoleData = data.filter(user => user.role === 'admin');
-        // Chuyển đổi trạng thái từ 0,1 thành "Hoạt Động" hoặc "Khóa"
-        const updatedData = adminRoleData.map(user => ({
+                const adminRoleData = data.filter(user => user.role === 'admin');
+                const updatedData = adminRoleData.map(user => ({
           ...user,
-          status: user.status === 1 ? 'Hoạt Động' : 'Khóa', // Convert 1 to "Hoạt Động" and 0 to "Khóa"
-        }));
+          status: user.status === 1 ? 'Hoạt Động' : 'Khóa',         }));
         setAdmins(updatedData);
       } catch (error) {
         console.error('Lỗi khi lấy dữ liệu người dùng:', error);
@@ -28,14 +23,11 @@ const Adminad = () => {
     fetchAdmins();
   }, []);
 
-  // Hàm cập nhật trạng thái của admin
-  const toggleStatus = async (index, userId) => {
+    const toggleStatus = async (index, userId) => {
     const currentStatus = admins[index].status;
-    const newStatus = currentStatus === 'Hoạt Động' ? 0 : 1; // Dùng 0 và 1 thay vì "Hoạt Động" và "Khóa"
-
+    const newStatus = currentStatus === 'Hoạt Động' ? 0 : 1; 
     try {
-      // Gửi yêu cầu cập nhật trạng thái đến backend
-      const response = await fetch(`http://localhost:5000/api/users/${userId}/status`, {
+            const response = await fetch(`http://localhost:5000/api/users/${userId}/status`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -44,10 +36,8 @@ const Adminad = () => {
       });
 
       if (response.ok) {
-        // Cập nhật trạng thái trong frontend nếu thành công
-        const updatedAdmins = [...admins];
-        updatedAdmins[index].status = newStatus === 1 ? 'Hoạt Động' : 'Khóa'; // Convert 1 và 0 về trạng thái hiển thị
-        setAdmins(updatedAdmins);
+                const updatedAdmins = [...admins];
+        updatedAdmins[index].status = newStatus === 1 ? 'Hoạt Động' : 'Khóa';         setAdmins(updatedAdmins);
       } else {
         console.error('Lỗi khi cập nhật trạng thái');
       }
@@ -56,13 +46,10 @@ const Adminad = () => {
     }
   };
 
-  // Hàm tìm kiếm
-  const handleSearchChange = (e) => {
-    setSearchTerm(e.target.value); // Cập nhật giá trị tìm kiếm khi người dùng nhập
-  };
+    const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value);   };
 
-  // Lọc danh sách admin theo giá trị tìm kiếm
-  const filteredAdmins = admins.filter(admin => {
+    const filteredAdmins = admins.filter(admin => {
     const searchValue = searchTerm.toLowerCase();
     return (
       (admin.name && admin.name.toLowerCase().includes(searchValue)) ||
@@ -80,9 +67,7 @@ const Adminad = () => {
           <input
             type="text"
             placeholder="Search...."
-            value={searchTerm} // Liên kết với giá trị của state tìm kiếm
-            onChange={handleSearchChange} // Gọi hàm khi người dùng nhập
-          />
+            value={searchTerm}             onChange={handleSearchChange}           />
         </div>
       </div>
       <div className="dash-content">

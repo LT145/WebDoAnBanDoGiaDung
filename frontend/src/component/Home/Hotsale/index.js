@@ -2,23 +2,20 @@ import React, { useState, useEffect } from 'react';
 import './Hotsale.css';
 
 const Hotsale = () => {
-  const [hotsaleData, setHotsaleData] = useState([]); // Khởi tạo state để lưu dữ liệu Hotsale
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [hotsaleData, setHotsaleData] = useState([]);   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     const fetchHotsales = async () => {
       try {
         const response = await fetch('http://localhost:5000/api/hotsales'); // Lấy dữ liệu từ backend
         const data = await response.json();
-        setHotsaleData(data); // Cập nhật state với dữ liệu lấy được
-      } catch (error) {
+        setHotsaleData(data);       } catch (error) {
         console.error('Error fetching hotsales:', error);
       }
     };
 
     fetchHotsales();
-  }, []); // Chạy một lần khi component mount
-
+  }, []); 
   const totalItems = hotsaleData.length;
 
   const boxWidth = 250;
