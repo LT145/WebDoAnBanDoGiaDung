@@ -1,0 +1,15 @@
+.order-confirmation {
+    text-align: center;
+    margin-top: 50px;
+  }
+  
+  .order-confirmation h2 {
+    font-size: 24px;
+    color: green;
+  }
+  
+  .order-confirmation p {
+    font-size: 18px;
+    color: #555;
+  }
+  

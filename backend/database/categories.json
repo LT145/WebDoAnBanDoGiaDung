@@ -1,0 +1,18 @@
+[
+    { "id": 1, "name": "Máy Giặt", "img": "/img/category/maygiat.png" },
+    { "id": 2, "name": "Máy Lọc Nước", "img": "/img/category/maylocnuoc.png" },
+    { "id": 3, "name": "Tủ Lạnh", "img": "/img/category/tulanh.png" },
+    { "id": 4, "name": "Nồi Cơm Điện", "img": "/img/category/noicomdien.png" },
+    { "id": 5, "name": "Máy Lạnh", "img": "/img/category/maylanh.png" },
+    { "id": 6, "name": "Bếp Từ", "img": "/img/category/beptu.png" },
+    { "id": 7, "name": "Tủ Đông", "img": "/img/category/tudongmat.png" },
+    { "id": 8, "name": "Máy Lọc Không Khí", "img": "/img/category/maylockhongkhi.png" },
+    { "id": 9, "name": "Máy Nước Nóng", "img": "/img/category/maynuocnong.png" },
+    { "id": 10, "name": "Đồ Gia Dụng", "img": "/img/category/dogiadung.png" },
+    { "id": 11, "name": "Tivi", "img": "/img/category/tivi.png" },
+    { "id": 12, "name": "Nồi Chiên Không Dầu", "img": "/img/category/noichienkhongdau.png" },
+    { "id": 13, "name": "Máy Sấy Quần Áo", "img": "/img/category/maysayquanao.png" },
+    { "id": 14, "name": "Máy Hút Bụi", "img": "/img/category/mayhutbui.png" },
+    { "id": 15, "name": "Loa", "img": "/img/category/loa.png" }
+  ]
+  

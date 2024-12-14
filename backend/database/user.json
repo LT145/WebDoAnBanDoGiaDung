@@ -1,0 +1,132 @@
+[
+  {
+    "id": 1,
+    "username": "admin",
+    "password": "123",
+    "role": "admin",
+    "phone": "0123456789",
+    "email": "admin@example.com",
+    "dob": "1990-01-01",
+    "status": 1
+  },
+  {
+    "id": 2,
+    "username": "user1",
+    "password": "123",
+    "role": "user",
+    "phone": "0987654321",
+    "email": "user1@example.com",
+    "dob": "1995-05-15",
+    "status": 1
+  },
+  {
+    "id": 3,
+    "username": "admin",
+    "name": "undefined",
+    "password": "12345",
+    "role": "user",
+    "phone": "0123456789",
+    "email": "admin@example.com",
+    "dob": "1990-01-01",
+    "status": 1
+  },
+  {
+    "id": 4,
+    "username": "loctran145",
+    "name": "Trần Tấn Lộc 123",
+    "password": "123",
+    "role": "user",
+    "phone": "0332345957",
+    "email": "loc42286@gmail.com",
+    "dob": "2024-11-09",
+    "status": 1
+  },
+  {
+    "id": 5,
+    "username": "loc",
+    "name": "Trần Tấn Lộc",
+    "password": "123",
+    "role": "user",
+    "phone": "0332345965",
+    "email": "loc42286@gmail.com",
+    "dob": "2024-11-21",
+    "status": 0
+  },
+  {
+    "id": 6,
+    "username": "lochai",
+    "name": "Jack03",
+    "password": "123",
+    "role": "user",
+    "phone": "0988888888",
+    "email": "lochai97@gloc",
+    "dob": "2010-11-11",
+    "status": 0
+  },
+  {
+    "id": 7,
+    "username": "admin1",
+    "name": "Trần Tấn Lộc",
+    "password": "loctran145",
+    "role": "admin",
+    "phone": "0332345555",
+    "email": "loctran881@yahoo.com.vn",
+    "dob": "2024-11-14",
+    "status": 1
+  },
+  {
+    "id": 8,
+    "username": "nhut2k3",
+    "name": "Võ Minh Nhựt",
+    "password": "1234",
+    "role": "user",
+    "phone": "0327732907",
+    "email": "nhutv4455@gmail.com",
+    "dob": "2003-04-02",
+    "status": 1
+  },
+  {
+    "id": 9,
+    "username": "nhut2003",
+    "name": "Minh Nhựt",
+    "password": "1234",
+    "role": "user",
+    "phone": "0327732907",
+    "email": "mnhut5881@gmail.com",
+    "dob": "2003-04-02",
+    "status": 1
+  },
+  {
+    "id": 10,
+    "username": "hailoc",
+    "name": "Trần hải Lộc",
+    "password": "123",
+    "role": "user",
+    "phone": "1234567890",
+    "email": "tranhailoc7@gmail.com",
+    "dob": "2024-11-06",
+    "status": 1
+  },
+  {
+    "id": 11,
+    "username": "phong",
+    "name": "phong",
+    "password": "12345",
+    "role": "user",
+    "phone": "0913812818",
+    "email": "phongvuong145@gmail.com",
+    "dob": "2024-12-12",
+    "status": 1
+  },
+  {
+    "id": 12,
+    "username": "minhnhut",
+    "name": "Võ Minh Nhựt",
+    "password": "12345",
+    "role": "user",
+    "phone": "0327732907",
+    "email": "nhutv4455@gmail.com",
+    "dob": "2003-04-02",
+    "status": 1
+  }
+]

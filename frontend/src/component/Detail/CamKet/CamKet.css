@@ -1,0 +1,45 @@
+#camket {
+    width: 736px;
+    border: 1px solid #F29F41;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px; 
+    position: relative; 
+}
+
+#camket p {
+    font-size: 25px;
+    margin-left: 15px;
+    margin-top: 15px;
+}
+
+.camket-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 10px; 
+}
+
+.box {
+    width: calc(50% - 10px);
+    height: 65px;
+    display: flex;
+    align-items: center;
+    padding: 5px; 
+    box-sizing: border-box; 
+    border:solid #F29F41 1px;
+    margin-bottom: 8px;
+    flex: 1 1 250px;
+}
+
+.box i {
+    font-size: 30px;
+    margin-right: 10px;
+    color: #F29F41;
+}
+
+.box p {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
