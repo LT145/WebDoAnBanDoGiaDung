@@ -67,7 +67,7 @@ const OrderDetails = () => {
       const data = await response.json();
       console.log(data.message);
       alert("Đơn hàng đã được hủy thành công!");
-      navigate("/orders"); // Điều hướng về danh sách đơn hàng (nếu cần)
+      navigate("/admin/ordermanager"); // Điều hướng về danh sách đơn hàng (nếu cần)
     } catch (err) {
       alert(`Lỗi: ${err.message}`);
     }
@@ -89,7 +89,7 @@ const OrderDetails = () => {
       const data = await response.json();
       console.log(data.message);
       alert("Đơn hàng đã được duyệt thành công!");
-      navigate("/orders"); // Điều hướng về danh sách đơn hàng (nếu cần)
+      navigate("/admin/ordermanager"); // Điều hướng về danh sách đơn hàng (nếu cần)
     } catch (err) {
       alert(`Lỗi: ${err.message}`);
     }

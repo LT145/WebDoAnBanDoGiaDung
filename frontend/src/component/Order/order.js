@@ -1,108 +1,124 @@
-import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { getProvinces, getDistrictsByProvinceCode, getWardsByDistrictCode } from 'sub-vn';
-import { useNavigate } from 'react-router-dom';
 
 const Order = () => {
   const navigate = useNavigate();
   const location = useLocation();
+
   const [provinces] = useState(getProvinces());
   const [districts, setDistricts] = useState([]);
   const [wards, setWards] = useState([]);
+
   const [selectedProvince, setSelectedProvince] = useState('');
   const [selectedDistrict, setSelectedDistrict] = useState('');
+  const [selectedWard, setSelectedWard] = useState('');
+
+  const [errorMessage, setErrorMessage] = useState('');
+  const [paymentMethod, setPaymentMethod] = useState('cod');
+
+  const [selectedItems, setSelectedItems] = useState(location.state?.selectedItems || []);
   const [userInfo] = useState({
     id: localStorage.getItem('iduser'),
-    username: localStorage.getItem('username'),
     name: localStorage.getItem('name'),
-    email: localStorage.getItem('email'),
     phone: localStorage.getItem('phone'),
-    dob: localStorage.getItem('dob'),
-    password: '',
+    email: localStorage.getItem('email'),
   });
 
-  const [selectedItems, setSelectedItems] = useState(location.state?.selectedItems || []); // Retrieve selected items
+  const [address, setAddress] = useState('');
 
-  // Handle province change
+  // Kiểm tra query error khi thanh toán thất bại
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const error = params.get('error');
+    if (error) {
+      setErrorMessage(decodeURIComponent(error));
+    }
+  }, [location]);
+
+  // Tính tổng tiền
+  const calculateTotal = () => 
+    selectedItems.reduce((total, item) => {
+      const price = item.productDetails?.discountprice !== -1
+        ? item.productDetails?.discountprice
+        : item.productDetails?.price;
+      return total + price * item.quantity;
+    }, 0);
+
+  // Xử lý thay đổi tỉnh
   const handleProvinceChange = (e) => {
     const provinceCode = e.target.value;
     setSelectedProvince(provinceCode);
     setDistricts(getDistrictsByProvinceCode(provinceCode));
     setWards([]);
     setSelectedDistrict('');
+    setSelectedWard('');
   };
 
-  // Handle district change
+  // Xử lý thay đổi quận
   const handleDistrictChange = (e) => {
     const districtCode = e.target.value;
     setSelectedDistrict(districtCode);
     setWards(getWardsByDistrictCode(districtCode));
+    setSelectedWard('');
   };
 
-  // Calculate total price
-  const calculateTotal = () =>
-    selectedItems.reduce((total, item) => {
-      const price = item.productDetails?.discountprice && item.productDetails.discountprice !== -1
-        ? item.productDetails.discountprice
-        : item.productDetails.price;
-      return total + price * item.quantity;
-    }, 0);
-
-  // Send order data to backend
+  // Đặt hàng
   const placeOrder = async () => {
-    const wardName = wards.find(ward => ward.code === document.getElementById('ward').value)?.name || '';
-    const districtName = districts.find(district => district.code === selectedDistrict)?.name || '';
-    const provinceName = provinces.find(province => province.code === selectedProvince)?.name || '';
-    const street = document.getElementById('address').value || 'Chưa có địa chỉ';
+    const provinceName = provinces.find((p) => p.code === selectedProvince)?.name || '';
+    const districtName = districts.find((d) => d.code === selectedDistrict)?.name || '';
+    const wardName = wards.find((w) => w.code === selectedWard)?.name || '';
 
-    const address = {
-      street,
-      ward: wardName,
-      district: districtName,
-      province: provinceName,
-    };
+    const fullAddress = `${address}, ${wardName}, ${districtName}, ${provinceName}`;
 
     const orderData = {
       userId: userInfo.id,
       userInfo,
       selectedItems,
       totalPrice: calculateTotal(),
-      address,
+      address: fullAddress,
+      paymentMethod,
     };
 
     try {
-      const response = await fetch('http://localhost:5000/api/place-order', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(orderData),
-      });
+      if (paymentMethod === 'momo') {
+        const momoResponse = await fetch('http://localhost:5000/api/create-payment', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ amount: calculateTotal(), orderInfo: `Đặt hàng từ ${userInfo.name}` }),
+        });
 
-      const data = await response.json();
-      if (response.ok) {
-        console.log('Order placed successfully:', data);
-        navigate('/order-confirmation');
+        const momoData = await momoResponse.json();
+        if (momoResponse.ok && momoData.payUrl) {
+          window.location.href = momoData.payUrl;
+        } else {
+          alert('Có lỗi xảy ra khi kết nối với MoMo.');
+        }
       } else {
-        console.error('Error placing order:', data.message);
+        await fetch('http://localhost:5000/api/orders', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(orderData),
+        });
+        navigate('/order-success');
       }
     } catch (error) {
-      console.error('Error placing order:', error);
+      console.error('Order error:', error);
+      alert('Đã xảy ra lỗi. Vui lòng thử lại!');
     }
   };
-
-
   return (
     <div>
       <div id="cart-header" className="flex items-center justify-between text-center text-2xl text-gray-700 p-4 relative">
         <p className="flex-grow text-center font-bold ">Thông Tin Đặt Hàng</p>
         <div className="down absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1/2 h-[1px] bg-[#e5e5e5]" />
       </div>
-
+      {errorMessage && (
+        <div className="bg-red-100 text-red-700 p-4 rounded-md mb-4 text-center">
+          Thanh toán thất bại: {errorMessage}
+        </div>
+      )}
       <div className="bg-white rounded-lg p-6 mb-10 mt-10 shadow-md max-w-[600px] mx-auto">
-        <p className="text-lg text-center font-bold text-gray-800 border-b-2 border-gray-300 pb-2">
-          Thông tin thanh toán
-        </p>
         <div className="space-y-6 mt-5">
           {/* Tên và Số điện thoại */}
           <div className="flex flex-col gap-4 md:flex-row">
@@ -209,7 +225,23 @@ const Order = () => {
                 className="w-full border border-gray-300 rounded-lg px-3 py-2 text-gray-800 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
               />
             </div>
+            
           </div>
+          <div className="flex flex-col gap-4 md:flex-row">
+            <div className="relative w-full">
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Phương thức thanh toán
+              </label>
+              <select
+                value={paymentMethod}
+                onChange={(e) => setPaymentMethod(e.target.value)}
+                className="w-full border border-gray-300 rounded-lg px-3 py-2 text-gray-800 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+              >
+                <option value="cod">Thanh toán khi nhận hàng (COD)</option>
+                <option value="momo">Thanh toán qua Momo</option>
+              </select>
+            </div>
+          </div>  
         </div>
       </div>
 

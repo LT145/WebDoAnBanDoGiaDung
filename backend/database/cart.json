@@ -1,7 +1,12 @@
 [
   {
     "userId": "4",
-    "cart": []
+    "cart": [
+      {
+        "productId": 6,
+        "quantity": 1
+      }
+    ]
   },
   {
     "userId": "6",

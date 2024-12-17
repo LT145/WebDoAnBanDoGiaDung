@@ -17,7 +17,6 @@ const EditProduct = () => {
   });
   const [isDiscount, setIsDiscount] = useState(false); // Kiểm tra có khuyến mãi không
 
-  // Lấy danh mục và thông tin sản phẩm
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -26,29 +25,29 @@ const EditProduct = () => {
           "http://localhost:5000/api/categories"
         );
         setCategories(categoryData);
-    
+  
         // Lấy sản phẩm theo ID
         const { data: productData } = await axios.get(
           `http://localhost:5000/api/products/findid/${id}`
         );
-    
-        if (!productData || productData.length === 0) {
+  
+        if (!productData) {
           alert("Không tìm thấy sản phẩm!");
           return navigate("/productmanagement");
         }
-    
-        // Giả sử productData là một mảng, bạn lấy phần tử đầu tiên
-        const product = productData[0]; // Chọn phần tử đầu tiên trong mảng
-    
+  
+        // Gán dữ liệu sản phẩm vào state
         setProduct({
-          name: product.name || "",
-          quantity: product.quantity || 0,
-          categoryId: product.categoryId || "",
-          price: product.price || 0,
-          discountPrice: product.discountprice ?? -1,
-          img: product.img || "",
+          name: productData.name || "",
+          quantity: productData.quantity || 0,
+          categoryId: productData.categoryId || "",
+          price: productData.price || 0,
+          discountPrice: productData.discountprice ?? -1,
+          img: productData.img || "",
         });
-        setIsDiscount(product.discountprice > 0);
+  
+        // Cập nhật trạng thái khuyến mãi
+        setIsDiscount(productData.discountprice > 0);
         setLoading(false); // Đảm bảo setLoading(false) sau khi tất cả dữ liệu đã được nạp
       } catch (error) {
         console.error("Lỗi khi tải dữ liệu:", error);
@@ -56,10 +55,10 @@ const EditProduct = () => {
         setLoading(false);
       }
     };
-    
   
     fetchData();
   }, [id, navigate]);
+  
   // Xử lý submit form
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -185,41 +184,39 @@ const EditProduct = () => {
               </div>
             </div>
             <div className="input-group-container">
-              <div className="discount-group">
-                <label htmlFor="is-discount">Khuyến Mãi</label>
-                <input
-                  type="checkbox"
-                  id="is-discount"
-                  checked={isDiscount}
-                  onChange={() => {
-                    setIsDiscount(!isDiscount);
-                    if (!isDiscount) {
-                      setProduct({ ...product, discountPrice: -1 });
-                    }
-                  }}
-                />
-              </div>
-              {isDiscount && (
-                <div className="input-group">
-                  <label htmlFor="product-discount-price">
-                    Giá Khuyến Mãi:
-                  </label>
-                  <input
-                    type="number"
-                    id="product-discount-price"
-                    value={
-                      product.discountPrice === -1 ? "" : product.discountPrice
-                    }
-                    onChange={(e) =>
-                      setProduct({
-                        ...product,
-                        discountPrice: Math.max(0, Number(e.target.value)),
-                      })
-                    }
-                  />
-                </div>
-              )}
-            </div>
+  <div className="discount-group">
+    <label htmlFor="is-discount">Khuyến Mãi</label>
+    <input
+      type="checkbox"
+      id="is-discount"
+      checked={isDiscount}
+      onChange={() => {
+        const newIsDiscount = !isDiscount;
+        setIsDiscount(newIsDiscount);
+        if (!newIsDiscount) {
+          setProduct({ ...product, discountPrice: -1 });
+        }
+      }}
+    />
+  </div>
+  {isDiscount && (
+    <div className="input-group">
+      <label htmlFor="product-discount-price">Giá Khuyến Mãi:</label>
+      <input
+        type="number"
+        id="product-discount-price"
+        value={product.discountPrice === -1 ? "" : product.discountPrice}
+        onChange={(e) =>
+          setProduct({
+            ...product,
+            discountPrice: Math.max(0, Number(e.target.value)),
+          })
+        }
+      />
+    </div>
+  )}
+</div>
+
             <div className="input-group full-width">
               <label htmlFor="product-image">Tải Ảnh (nếu cần thay đổi):</label>
               <input

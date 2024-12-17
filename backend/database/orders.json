@@ -232,7 +232,7 @@
     ],
     "totalPrice": 68910000,
     "address": "Chưa có địa chỉ, Xã Dế Su Phình, Huyện Mù Căng Chải, Tỉnh Yên Bái",
-    "status": "Chờ Duyệt",
+    "status": "Đã hủy",
     "createdAt": "2024-12-06T06:36:34.125Z"
   },
   {
@@ -388,7 +388,7 @@
     ],
     "totalPrice": 5990000,
     "address": "Chưa có địa chỉ, , , Tỉnh Bắc Ninh",
-    "status": "Chờ Duyệt",
+    "status": "Đã hủy",
     "createdAt": "2024-12-07T15:52:34.927Z"
   },
   {
@@ -423,7 +423,7 @@
     ],
     "totalPrice": 14440000,
     "address": "1213, Xã Tân Minh, Huyện Sóc Sơn, Thành phố Hà Nội",
-    "status": "Chờ Duyệt",
+    "status": "Hoàn Thành",
     "createdAt": "2024-12-08T05:35:40.529Z"
   },
   {
@@ -541,7 +541,7 @@
     ],
     "totalPrice": 24559000,
     "address": "Chưa có địa chỉ, , , ",
-    "status": "Chờ Duyệt",
+    "status": "Hoàn Thành",
     "createdAt": "2024-12-08T13:11:22.484Z"
   },
   {
@@ -680,5 +680,40 @@
     "address": "Chưa có địa chỉ, Xã Cốc Ly, Huyện Bắc Hà, Tỉnh Lào Cai",
     "status": "Chờ Duyệt",
     "createdAt": "2024-12-13T06:47:00.098Z"
+  },
+  {
+    "orderId": 15,
+    "userId": "4",
+    "userInfo": {
+      "id": "4",
+      "username": "loctran145",
+      "name": "Trần Tấn Lộc 123",
+      "email": "loc42286@gmail.com",
+      "phone": "0332345957",
+      "dob": "2024-11-09",
+      "password": ""
+    },
+    "selectedItems": [
+      {
+        "productId": 13,
+        "quantity": 1,
+        "productDetails": {
+          "id": 13,
+          "name": "Samsung Inverter 655 lít RS62R5001B4/SV",
+          "img": "/img/product/samsung-RS62R001B4-SV.jpg",
+          "discountprice": 19190000,
+          "price": 22490000,
+          "categoryId": 3,
+          "quantity": 10,
+          "active": "Sẵn Hàng"
+        },
+        "isChecked": true,
+        "quantityAvailable": 10
+      }
+    ],
+    "totalPrice": 19190000,
+    "address": "123, Phường Phúc Tân, Quận Hoàn Kiếm, Thành phố Hà Nội",
+    "status": "Chờ Duyệt",
+    "createdAt": "2024-12-16T08:35:51.488Z"
   }
 ]
