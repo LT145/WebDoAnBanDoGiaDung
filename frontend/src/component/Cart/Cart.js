@@ -28,9 +28,9 @@ const Cart = () => {
         const cartData = cartResponse.data;
 
         // Nếu giỏ hàng trống, hiển thị thông báo giỏ hàng trống
-        if (cartData.length === 0) {
-          setError("Giỏ hàng của bạn hiện tại trống");
-        }
+        // if (cartData.length === 0) {
+        //   setError("Giỏ hàng của bạn hiện tại trống");
+        // }
 
         // Fetch chi tiết sản phẩm cho mỗi item trong giỏ hàng
         const cartItemsWithDetails = await Promise.all(

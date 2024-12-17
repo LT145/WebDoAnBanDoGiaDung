@@ -12,6 +12,7 @@ const Profile = () => {
           <SidebarUser />
           <div style={{width:'78%',}}>
             <Routes>
+            <Route path="" element={<InfoUser />} />
             <Route path="profile" element={<InfoUser />} />
             <Route path="history-order" element={<HistoryOrder />} />
             <Route path="history-order/details-order" element={<OrderDetails />} />

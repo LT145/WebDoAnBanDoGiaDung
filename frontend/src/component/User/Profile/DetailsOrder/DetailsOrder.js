@@ -37,19 +37,20 @@ const OrderDetails = () => {
     fetchOrderDetails();
   }, [orderId]);
 
-  const calculateTotal = () =>
-    order?.selectedItems.reduce((total, item) => {
-      const price =
-        item.productDetails.discountprice &&
-          item.productDetails.discountprice !== -1
-          ? item.productDetails.discountprice
-          : item.productDetails.price;
+  const calculateTotal = () => {
+    if (!order) return 0;
+    return order.selectedItems.reduce((total, item) => {
+      const price = item.productDetails.discountprice && item.productDetails.discountprice !== -1
+        ? item.productDetails.discountprice
+        : item.productDetails.price;
       return total + price * item.quantity;
     }, 0);
+  };
 
   if (loading) return <p>Đang tải dữ liệu...</p>;
   if (error) return <p>Lỗi: {error}</p>;
   if (!order) return <p>Không tìm thấy đơn hàng.</p>;
+
   const cancelOrder = async () => {
     try {
       const response = await fetch(
@@ -65,7 +66,6 @@ const OrderDetails = () => {
       }
 
       const data = await response.json();
-      console.log(data.message);
       alert("Đơn hàng đã được hủy thành công!");
       navigate("/profile/history-order"); // Điều hướng về danh sách đơn hàng (nếu cần)
     } catch (err) {
@@ -87,7 +87,7 @@ const OrderDetails = () => {
             <div className="form-row grid grid-cols-1 gap-4 sm:grid-cols-2">
               {/* Tên người nhận */}
               <div className="box-input">
-              <label className="block mb-2 text-sm text-gray-600">Tên người nhận</label>
+                <label className="block mb-2 text-sm text-gray-600">Tên người nhận</label>
                 <input
                   type="text"
                   placeholder="Tên người nhận"
@@ -101,7 +101,7 @@ const OrderDetails = () => {
 
               {/* Số điện thoại */}
               <div className="box-input">
-              <label className="block mb-2 text-sm text-gray-600">Số điện thoại</label>
+                <label className="block mb-2 text-sm text-gray-600">Số điện thoại</label>
                 <input
                   type="text"
                   placeholder="Số điện thoại người nhận"
@@ -116,7 +116,7 @@ const OrderDetails = () => {
 
             {/* Địa chỉ */}
             <div className="box-input mt-4">
-            <label className="block mb-2 text-sm text-gray-600">Địa chỉ</label>
+              <label className="block mb-2 text-sm text-gray-600">Địa chỉ</label>
               <input
                 type="text"
                 placeholder="Địa chỉ người nhận"
@@ -153,7 +153,6 @@ const OrderDetails = () => {
         </div>
       </div>
 
-
       {/* Hiển thị sản phẩm */}
       <div className="cart-item-wrapper mb-[70px]">
         {order.selectedItems.length === 0 ? (
@@ -180,21 +179,18 @@ const OrderDetails = () => {
                         {productDetails.discountprice &&
                           productDetails.discountprice !== -1 ? (
                           <span className="product-discountprice">
-                            {productDetails.discountprice.toLocaleString(
-                              "vi-VN"
-                            )}{" "}
-                            VND
+                            {productDetails.discountprice?.toLocaleString("vi-VN")} VND
                           </span>
                         ) : (
-                          <span>
-                            {productDetails.price.toLocaleString("vi-VN")} VND
+                          <span className="product-price">
+                            {productDetails.price?.toLocaleString("vi-VN")} VND
                           </span>
                         )}
                       </p>
-                      <div className="quantity-show">
-                        Số lượng: <span>{quantity}</span>
-                      </div>
                     </div>
+                  </div>
+                  <div className="quantity-container flex items-center">
+                    <span className="text-xl">Số lượng: {quantity}</span>
                   </div>
                 </div>
               </div>
@@ -202,8 +198,6 @@ const OrderDetails = () => {
           })
         )}
       </div>
-
-      {/* Hiển thị tổng tiền và nút hành động */}
     </div>
   );
 };

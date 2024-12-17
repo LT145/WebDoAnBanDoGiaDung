@@ -30,6 +30,7 @@ function Admin() {
         <Sidebar />
         <div style={{ width: '78%' }}>
           <Routes>
+            <Route path="" element={<OrderManager />} />
             <Route path="userad" element={<User />} />
             <Route path="adminad" element={<Adminad />} />
             <Route path="adminad/registerAdmin" element={<RegisterAdmin />} />

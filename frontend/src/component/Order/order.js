@@ -55,7 +55,7 @@ const Order = () => {
     setSelectedWard('');
   };
 
-  // Xử lý thay đổi quận
+  // Handle district change
   const handleDistrictChange = (e) => {
     const districtCode = e.target.value;
     setSelectedDistrict(districtCode);
@@ -65,48 +65,75 @@ const Order = () => {
 
   // Đặt hàng
   const placeOrder = async () => {
-    const provinceName = provinces.find((p) => p.code === selectedProvince)?.name || '';
-    const districtName = districts.find((d) => d.code === selectedDistrict)?.name || '';
-    const wardName = wards.find((w) => w.code === selectedWard)?.name || '';
-
-    const fullAddress = `${address}, ${wardName}, ${districtName}, ${provinceName}`;
-
+    const wardName = wards.find(ward => ward.code === document.getElementById('ward').value)?.name || '';
+    const districtName = districts.find(district => district.code === selectedDistrict)?.name || '';
+    const provinceName = provinces.find(province => province.code === selectedProvince)?.name || '';
+    const street = document.getElementById('address').value || 'Chưa có địa chỉ';
+  
+    const address = {
+      street,
+      ward: wardName,
+      district: districtName,
+      province: provinceName,
+    };
+  
     const orderData = {
       userId: userInfo.id,
       userInfo,
       selectedItems,
       totalPrice: calculateTotal(),
-      address: fullAddress,
+      address,
       paymentMethod,
     };
-
+  
     try {
       if (paymentMethod === 'momo') {
+        // Send all required fields to the MoMo API
         const momoResponse = await fetch('http://localhost:5000/api/create-payment', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ amount: calculateTotal(), orderInfo: `Đặt hàng từ ${userInfo.name}` }),
+          body: JSON.stringify({
+            amount: calculateTotal(),
+            orderInfo: `Đặt hàng từ ${userInfo.name}`,
+            userId: userInfo.id,
+            selectedItems,
+            totalPrice: calculateTotal(),
+            address,
+            paymentMethod,
+            userInfo,
+          }),
         });
-
+  
+        if (!momoResponse.ok) {
+          throw new Error('Có lỗi xảy ra khi kết nối với MoMo.');
+        }
+  
         const momoData = await momoResponse.json();
-        if (momoResponse.ok && momoData.payUrl) {
-          window.location.href = momoData.payUrl;
+        if (momoData.payUrl) {
+          window.location.href = momoData.payUrl;  // Redirect to MoMo payment URL
         } else {
-          alert('Có lỗi xảy ra khi kết nối với MoMo.');
+          alert('Không nhận được liên kết thanh toán từ MoMo.');
         }
       } else {
-        await fetch('http://localhost:5000/api/orders', {
+        // Handle other payment methods, like COD
+        const response = await fetch('http://localhost:5000/api/place-order', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(orderData),
         });
-        navigate('/order-success');
+  
+        if (response.ok) {
+          navigate('/order-confirmation');  // Redirect to order confirmation page
+        } else {
+          throw new Error('Có lỗi xảy ra khi đặt hàng.');
+        }
       }
     } catch (error) {
       console.error('Order error:', error);
       alert('Đã xảy ra lỗi. Vui lòng thử lại!');
     }
   };
+  
   return (
     <div>
       <div id="cart-header" className="flex items-center justify-between text-center text-2xl text-gray-700 p-4 relative">

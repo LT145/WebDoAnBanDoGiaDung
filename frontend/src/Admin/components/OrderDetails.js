@@ -41,7 +41,7 @@ const OrderDetails = () => {
     order?.selectedItems.reduce((total, item) => {
       const price =
         item.productDetails.discountprice &&
-        item.productDetails.discountprice !== -1
+          item.productDetails.discountprice !== -1
           ? item.productDetails.discountprice
           : item.productDetails.price;
       return total + price * item.quantity;
@@ -108,7 +108,7 @@ const OrderDetails = () => {
           <div className="block-payment__main p-6">
             <div className="form-row grid grid-cols-1 gap-4 sm:grid-cols-2">
               <div className="box-input">
-              <label  className="block mb-2 text-sm text-gray-600">Tên người nhận</label>
+                <label className="block mb-2 text-sm text-gray-600">Tên người nhận</label>
                 <input
                   type="text"
                   placeholder="Tên người nhận"
@@ -121,7 +121,7 @@ const OrderDetails = () => {
                 <div className="box-input__line" />
               </div>
               <div className="box-input">
-              <label  className="block mb-2 text-sm text-gray-600">Số điện thoại</label>
+                <label className="block mb-2 text-sm text-gray-600">Số điện thoại</label>
                 <input
                   type="text"
                   placeholder="Số điện thoại người nhận"
@@ -135,7 +135,7 @@ const OrderDetails = () => {
               </div>
             </div>
             <div className="box-input">
-            <label  className="block mb-2 text-sm text-gray-600">Địa chỉ</label>
+              <label className="block mb-2 text-sm text-gray-600">Địa chỉ</label>
               <input
                 type="text"
                 placeholder="Địa chỉ người nhận"
@@ -155,17 +155,23 @@ const OrderDetails = () => {
                 <span className="text-red-500 text-right">{calculateTotal()?.toLocaleString("vi-VN")} VND</span>
               </p>
             </div>
-            {order.status !== "Đã hủy" && (
-            <div className="block-actions__buttons flex justify-center gap-10">
-              <button className="btn-action btn-cancel px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600" onClick={cancelOrder}>
-                Hủy đơn hàng
-              </button>
-              <button className="btn-action btn-approve px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600" onClick={approveOrder}>
-                Duyệt đơn hàng
-              </button>
+            {order.status !== "Đã hủy" && order.status !== "Hoàn Thành" && (
+              <div className="block-actions__buttons flex justify-center gap-10">
+                <button
+                  className="btn-action btn-cancel px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
+                  onClick={cancelOrder}
+                >
+                  Hủy đơn hàng
+                </button>
+                <button
+                  className="btn-action btn-approve px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
+                  onClick={approveOrder}
+                >
+                  Duyệt đơn hàng
+                </button>
+              </div>
+            )}
 
-            </div>
-                           )}
           </div>
         </div>
       </div>
@@ -194,7 +200,7 @@ const OrderDetails = () => {
                     <div className="box-info_box-price flex gap-3 mt-1 justify-between flex-wrap">
                       <p className="product_price--show text-red-600 text-lg">
                         {productDetails.discountprice &&
-                        productDetails.discountprice !== -1 ? (
+                          productDetails.discountprice !== -1 ? (
                           <span className="product-discountprice">
                             {productDetails.discountprice.toLocaleString(
                               "vi-VN"

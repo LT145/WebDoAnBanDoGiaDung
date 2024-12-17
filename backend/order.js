@@ -55,14 +55,11 @@ const writeCartData = (data) => {
   }
 };
 
-// Place order API
-// Place order API
-// Place order API
 router.post('/place-order', (req, res) => {
-  const { userId, userInfo, selectedItems, totalPrice, address } = req.body;
+  const { userId, userInfo, selectedItems, totalPrice, address, paymentMethod, paymentStatus, paymentMessage } = req.body;
 
   // Kiểm tra dữ liệu bắt buộc
-  if (!userId || !selectedItems || !userInfo || !address) {
+  if (!userId || !selectedItems || !userInfo || !address || !paymentMethod) {
     return res.status(400).json({ message: 'All fields are required' });
   }
 
@@ -77,64 +74,79 @@ router.post('/place-order', (req, res) => {
   // Chuẩn hóa địa chỉ đầy đủ
   const fullAddress = `${address.street}, ${address.ward}, ${address.district}, ${address.province}`;
 
-  const orderData = readOrderData();
+  const orderData = readOrderData(); // Đọc dữ liệu đơn hàng từ file
 
+  // Kiểm tra phương thức thanh toán và trạng thái thanh toán cho COD
+  let finalPaymentStatus = paymentStatus || 'Chưa thanh toán';  // Nếu là COD, mặc định là chưa thanh toán
+  let finalPaymentMessage = paymentMessage || '';
+
+  if (paymentMethod === 'COD') {
+    // Nếu phương thức thanh toán là COD, đơn hàng sẽ có trạng thái thanh toán là 'Chưa thanh toán'
+    finalPaymentStatus = 'Chưa thanh toán';
+    finalPaymentMessage = 'Thanh toán khi nhận hàng';
+  }
+
+  // Tạo mới đơn hàng
   const newOrder = {
-    orderId: orderData.length + 1,
+    orderId: orderData.length + 1, // Tạo ID cho đơn hàng mới
     userId,
     userInfo,
     selectedItems,
     totalPrice,
     address: fullAddress,
-    status: 'Chờ Duyệt',
-    createdAt: new Date().toISOString(),
+    status: 'Chờ Duyệt', // Trạng thái đơn hàng
+    paymentMethod, // Phương thức thanh toán (ví dụ: 'COD', 'MoMo', v.v.)
+    paymentStatus: finalPaymentStatus, // Trạng thái thanh toán (đặc biệt khi là COD là 'Chưa thanh toán')
+    paymentMessage: finalPaymentMessage, // Thông báo thanh toán (thêm thông tin thanh toán khi nhận hàng)
+    createdAt: new Date().toISOString(), // Thời gian tạo đơn hàng
   };
 
-  // Lưu đơn hàng vào database
+  // Lưu đơn hàng vào database (file JSON)
   orderData.push(newOrder);
   writeOrderData(orderData);
 
-  // Now remove the ordered items from the cart of the user
+  // Cập nhật giỏ hàng
   const cartData = readCartData();
   const userCart = cartData.find((cart) => cart.userId === userId);
-  
+
   if (userCart) {
-    console.log('User Cart before removing items:', userCart.cart);
-    
     selectedItems.forEach(orderItem => {
       const cartItemIndex = userCart.cart.findIndex(item => item.productId === orderItem.productId);
       
       if (cartItemIndex !== -1) {
-        // Remove the item from the cart
-        userCart.cart.splice(cartItemIndex, 1);
-        console.log(`Removed item with productId: ${orderItem.productId}`);
-      } else {
-        console.log(`Item with productId: ${orderItem.productId} not found in cart`);
+        userCart.cart.splice(cartItemIndex, 1);  // Xóa sản phẩm đã đặt từ giỏ hàng
       }
     });
-  
-    console.log('User Cart after removing items:', userCart.cart);
+
+    // Cập nhật lại giỏ hàng sau khi đã xóa các sản phẩm đã được đặt
     writeCartData(cartData);
   }
+
+  // Trả về kết quả đơn hàng
   res.status(200).json({ message: 'Order placed successfully', order: newOrder });
 });
 
 
 
 // Get all orders (for admin)
+// Get all orders
 router.get('/orders', (req, res) => {
   const orderData = readOrderData();
   res.status(200).json(orderData);
 });
+
 // Get order by ID
 router.get('/orders/:orderId', (req, res) => {
   const { orderId } = req.params;
 
-  // Read order data
+  // Đọc dữ liệu đơn hàng từ file
   const orderData = readOrderData();
 
-  // Find the order by orderId
-  const order = orderData.find((o) => o.orderId === parseInt(orderId));
+  // Chuyển orderId từ request về chuỗi để so sánh với orderId trong dữ liệu
+  const orderIdString = String(orderId);
+
+  // Tìm đơn hàng theo orderId
+  const order = orderData.find((o) => String(o.orderId) === orderIdString);
 
   if (!order) {
     return res.status(404).json({ message: 'Order not found' });
@@ -142,6 +154,7 @@ router.get('/orders/:orderId', (req, res) => {
 
   res.status(200).json(order);
 });
+
 // Cancel order by ID
 router.put('/orders/:orderId/cancel', (req, res) => {
   const { orderId } = req.params;
@@ -149,8 +162,8 @@ router.put('/orders/:orderId/cancel', (req, res) => {
   // Đọc dữ liệu từ file
   const orderData = readOrderData();
 
-  // Tìm đơn hàng với orderId tương ứng
-  const orderIndex = orderData.findIndex((order) => order.orderId === parseInt(orderId));
+  // Tìm đơn hàng với orderId tương ứng (so sánh chuỗi)
+  const orderIndex = orderData.findIndex((order) => String(order.orderId) === String(orderId));
 
   if (orderIndex === -1) {
     return res.status(404).json({ message: 'Order not found' });
@@ -164,6 +177,17 @@ router.put('/orders/:orderId/cancel', (req, res) => {
 
   res.status(200).json({ message: 'Order has been canceled', order: orderData[orderIndex] });
 });
+const readProductData = () => {
+  const filePath = path.join(__dirname, './database/products.json');
+  const rawData = fs.readFileSync(filePath);
+  return JSON.parse(rawData);
+};
+
+// Hàm ghi dữ liệu vào file products.json
+const writeProductData = (data) => {
+  const filePath = path.join(__dirname, './database/products.json');
+  fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
+};
 // Approve order by ID
 router.put('/orders/:orderId/approve', (req, res) => {
   const { orderId } = req.params;
@@ -171,20 +195,46 @@ router.put('/orders/:orderId/approve', (req, res) => {
   // Đọc dữ liệu đơn hàng
   const orderData = readOrderData();
 
-  // Tìm đơn hàng dựa trên orderId
-  const orderIndex = orderData.findIndex((order) => order.orderId === parseInt(orderId));
+  // Tìm đơn hàng dựa trên orderId (so sánh chuỗi)
+  const orderIndex = orderData.findIndex((order) => String(order.orderId) === String(orderId));
 
   if (orderIndex === -1) {
     return res.status(404).json({ message: 'Order not found' });
   }
 
   // Cập nhật trạng thái của đơn hàng thành "Hoàn Thành"
-  orderData[orderIndex].status = 'Hoàn Thành';
+  const updatedOrder = orderData[orderIndex];
+  updatedOrder.status = 'Hoàn Thành';
 
-  // Ghi lại dữ liệu đã cập nhật vào file
+  // Cập nhật số lượng sản phẩm trong products.json
+  const productData = readProductData();
+
+  updatedOrder.selectedItems.forEach(item => {
+    const productId = item.productId;
+    const quantityOrdered = item.quantity;
+
+    // Tìm sản phẩm trong danh sách sản phẩm
+    const productIndex = productData.findIndex((product) => product.id === productId);
+
+    if (productIndex !== -1) {
+      const product = productData[productIndex];
+
+      // Giảm số lượng sản phẩm
+      if (product.quantity >= quantityOrdered) {
+        product.quantity -= quantityOrdered;
+      } else {
+        return res.status(400).json({ message: `Insufficient stock for product: ${product.name}` });
+      }
+    }
+  });
+
+  // Ghi lại dữ liệu đã cập nhật vào file products.json
+  writeProductData(productData);
+
+  // Ghi lại dữ liệu đã cập nhật vào file orders.json
   writeOrderData(orderData);
 
-  res.status(200).json({ message: 'Order has been approved', order: orderData[orderIndex] });
+  res.status(200).json({ message: 'Order has been approved and stock updated', order: updatedOrder });
 });
 // Get orders by userId
 router.get('/orders/user/:userId', (req, res) => {

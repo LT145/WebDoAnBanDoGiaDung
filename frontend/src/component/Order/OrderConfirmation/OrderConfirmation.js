@@ -8,7 +8,7 @@ const OrderConfirmation = () => {
   // Khi countdown thay đổi, giảm dần và chuyển hướng sau khi hết thời gian
   useEffect(() => {
     if (countdown === 0) {
-      navigate('/profile'); // Chuyển hướng đến trang profile
+      navigate('/profile/history-order'); // Chuyển hướng đến trang profile
     }
 
     const timer = setInterval(() => {

@@ -23,8 +23,6 @@ function App() {
       {!location.pathname.startsWith('/admin') && <Nav />} 
 
       <Routes>
-        {/* <Route path="/" element={<Home />} /> */}
-        <Route path="/" element={<ListProduct />} />
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
         <Route path="/login" element={<Login />} /> {/* Trang Login */}
