@@ -26,13 +26,6 @@ const Cart = () => {
           `http://localhost:5000/api/cart?userId=${userId}`
         );
         const cartData = cartResponse.data;
-
-        // Nếu giỏ hàng trống, hiển thị thông báo giỏ hàng trống
-        // if (cartData.length === 0) {
-        //   setError("Giỏ hàng của bạn hiện tại trống");
-        // }
-
-        // Fetch chi tiết sản phẩm cho mỗi item trong giỏ hàng
         const cartItemsWithDetails = await Promise.all(
           cartData.map(async (item) => {
             const productResponse = await axios.get(

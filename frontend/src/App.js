@@ -14,6 +14,7 @@ import ListProduct from './component/Product/ListProduct';
 import Cart from './component/Cart/Cart';
 import Order from './component/Order/order';
 import OrderConfirmation from './component/Order/OrderConfirmation/OrderConfirmation';
+import SearchProduct from './component/Product/SearchProduct';
 function App() {
   const location = useLocation(); // Lấy đường dẫn hiện tại
 
@@ -37,6 +38,7 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/order" element={<Order />} />
         <Route path="/order-confirmation" element={<OrderConfirmation />} />
+        <Route path="/searchproduct" element={<SearchProduct />} />
       </Routes>
     </>
   );

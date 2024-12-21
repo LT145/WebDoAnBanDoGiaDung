@@ -1,13 +1,14 @@
 [
   {
     "id": 1,
-    "username": "admin",
+    "username": "loctran145",
     "password": "123",
     "role": "admin",
-    "phone": "0123456789",
-    "email": "admin@example.com",
-    "dob": "1990-01-01",
-    "status": 1
+    "phone": "0332345957",
+    "email": "loc42286@gmail.com",
+    "dob": "2024-11-09",
+    "status": 1,
+    "name": "Trần Tấn Lộc 12345342"
   },
   {
     "id": 2,
@@ -17,7 +18,7 @@
     "phone": "0987654321",
     "email": "user1@example.com",
     "dob": "1995-05-15",
-    "status": 1
+    "status": 0
   },
   {
     "id": 3,
@@ -127,6 +128,28 @@
     "phone": "0327732907",
     "email": "nhutv4455@gmail.com",
     "dob": "2003-04-02",
+    "status": 1
+  },
+  {
+    "id": 13,
+    "username": "admin2",
+    "name": "loc",
+    "password": "123",
+    "role": "admin",
+    "phone": "0332345957",
+    "email": "loc@gmail.vn",
+    "dob": "2024-12-04",
+    "status": 1
+  },
+  {
+    "id": 14,
+    "username": "admin12",
+    "name": "loc12",
+    "password": "1234",
+    "role": "admin",
+    "phone": "0332345957",
+    "email": "loc@gmaill.123",
+    "dob": "2024-12-05",
     "status": 1
   }
 ]

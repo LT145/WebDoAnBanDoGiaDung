@@ -6,7 +6,7 @@
     "discountprice": -1,
     "price": 7390000,
     "categoryId": 1,
-    "quantity": 3,
+    "quantity": 7,
     "active": "Sẵn Hàng"
   },
   {
@@ -16,7 +16,7 @@
     "discountprice": 5490000,
     "price": 73900000,
     "categoryId": 1,
-    "quantity": 3,
+    "quantity": 0,
     "active": "Sẵn Hàng"
   },
   {

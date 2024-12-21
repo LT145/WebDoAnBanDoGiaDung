@@ -96,7 +96,7 @@ const RegisterAdmin = () => {
         if (response.ok) {
           console.log('Đăng ký thành công:', data);
           alert('Đăng ký thành công');
-          navigate('/login');
+          navigate('/admin/adminad');
         } else {
           console.log('Lỗi:', data);
           alert(`Lỗi: ${data.message}`);

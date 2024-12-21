@@ -50,6 +50,13 @@ const InfoUser = () => {
     
       const data = await response.json();
       if (response.ok) {
+        localStorage.setItem('name', userInfo.name);
+        localStorage.setItem('email', userInfo.email);
+        localStorage.setItem('phone', userInfo.phone);
+        localStorage.setItem('dob', userInfo.dob);
+  
+        // Cập nhật lại state userInfo
+        setUserInfo({ ...userInfo, ...data });
         alert('Thông tin đã được cập nhật!');
       } else {
         alert(data.message || 'Có lỗi xảy ra khi cập nhật thông tin!');

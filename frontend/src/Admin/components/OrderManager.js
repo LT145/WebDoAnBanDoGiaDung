@@ -31,7 +31,7 @@ const OrderManager = () => {
 
   // Hàm lọc đơn hàng đã hủy
   const filterCancelledOrders = () => {
-    const cancelled = orders.filter((order) => order.status === "Hủy");
+    const cancelled = orders.filter((order) => order.status === "Đã hủy");
     setFilteredOrders(cancelled);
   };
 

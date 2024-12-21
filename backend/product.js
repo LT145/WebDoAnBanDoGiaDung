@@ -25,7 +25,27 @@ const upload = multer({ storage });
 router.get('/products', (req, res) => {
   res.json(productsData);
 });
+router.get('/products/search', (req, res) => {
+  const { name } = req.query;
 
+  // Kiểm tra nếu không có tham số name
+  if (!name || name.trim() === '') {
+    return res.status(400).json({ message: 'Vui lòng cung cấp từ khóa tìm kiếm hợp lệ' });
+  }
+
+  // Tiến hành tìm kiếm
+  const filteredProducts = productsData.filter((product) =>
+    product.name.toLowerCase().includes(name.toLowerCase().trim())
+  );
+
+  // Kiểm tra kết quả tìm kiếm
+  if (filteredProducts.length === 0) {
+    return res.status(404).json({ message: 'Không tìm thấy sản phẩm phù hợp' });
+  }
+
+  // Trả về danh sách sản phẩm tìm được
+  res.json(filteredProducts);
+});
 // API lấy danh sách tất cả danh mục
 router.get('/categories', (req, res) => {
   const categoriesPath = path.join(__dirname, './database/categories.json');

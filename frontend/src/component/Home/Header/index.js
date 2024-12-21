@@ -18,7 +18,18 @@ const Nav = () => {
   const toggleMenu = () => {
     setMenuOpen(!isMenuOpen); // Đổi trạng thái menu
   };
+  const [searchQuery, setSearchQuery] = useState('');
 
+  const handleSearch = async (e) => {
+    e.preventDefault();
+    try {
+      navigate('/searchproduct', { state: { searchQuery } }); // Điều hướng với searchQuery
+    } catch (error) {
+      console.error('Error during search navigation:', error);
+    }
+  };
+  
+  
   const handleLocationChange = (location) => {
     setCurrentLocation(location);
     setDropdownOpen(false);
@@ -80,15 +91,19 @@ const Nav = () => {
           )}
         </div>
 
-        {/* Search */}
         <div className="hidden lg:flex bg-white rounded-full w-1/3 items-center shadow-md px-3 py-1.5">
-          <i className="fa-solid fa-magnifying-glass text-orange-400 mr-2"></i>
-          <input
-            type="search"
-            placeholder="Bạn cần tìm sản phẩm gì?"
-            className="w-full border-none focus:outline-none text-sm text-gray-700"
-          />
-        </div>
+  <form onSubmit={handleSearch} className="flex w-full">
+    <i className="fa-solid fa-magnifying-glass text-orange-400 mr-2"></i>
+    <input
+      type="search"
+      placeholder="Bạn cần tìm sản phẩm gì?"
+      value={searchQuery}
+      onChange={(e) => setSearchQuery(e.target.value)}
+      className="w-full border-none focus:outline-none text-sm text-gray-700"
+    />
+    <button type="submit" className="hidden"></button>
+  </form>
+</div>
 
         {/* Contact Info */}
         <div className="hidden lg:flex items-center gap-4">

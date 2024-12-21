@@ -103,5 +103,75 @@
     "paymentStatus": "Chưa thanh toán",
     "paymentMessage": "",
     "createdAt": "2024-12-17T18:16:08.840Z"
+  },
+  {
+    "orderId": 4,
+    "userId": "4",
+    "userInfo": {
+      "id": "4",
+      "name": "Trần Tấn Lộc 123",
+      "phone": "0332345957",
+      "email": "loc42286@gmail.com"
+    },
+    "selectedItems": [
+      {
+        "productId": 2,
+        "quantity": 3,
+        "productDetails": {
+          "id": 2,
+          "name": "LG Inverter 9 Kg T2109VSAB",
+          "img": "/img/product/may-giat-lg-t2109vsab 9KG.jpg",
+          "discountprice": 5490000,
+          "price": 73900000,
+          "categoryId": 1,
+          "quantity": 3,
+          "active": "Sẵn Hàng"
+        },
+        "isChecked": true,
+        "quantityAvailable": 3
+      }
+    ],
+    "totalPrice": 16470000,
+    "address": "123, Xã Tả Lủng, Huyện Đồng Văn, Tỉnh Hà Giang",
+    "status": "Hoàn Thành",
+    "paymentMethod": "cod",
+    "paymentStatus": "Chưa thanh toán",
+    "paymentMessage": "",
+    "createdAt": "2024-12-18T08:11:35.653Z"
+  },
+  {
+    "orderId": "MOMO1734509524103",
+    "userId": "4",
+    "userInfo": {
+      "id": "4",
+      "name": "Trần Tấn Lộc 123",
+      "phone": "0332345957",
+      "email": "loc42286@gmail.com"
+    },
+    "selectedItems": [
+      {
+        "productId": 19,
+        "quantity": 1,
+        "productDetails": {
+          "id": 19,
+          "name": "Nồi cơm điện tử Cuckoo 18 lít CR-1020F",
+          "img": "/img/product/cuckoo-18-lit-cr-1020f.jpg",
+          "discountprice": 1690000,
+          "price": 10490000,
+          "categoryId": 4,
+          "quantity": 9,
+          "active": "Sẵn Hàng"
+        },
+        "isChecked": true,
+        "quantityAvailable": 9
+      }
+    ],
+    "totalPrice": 1690000,
+    "address": "123, Xã Lũng Thầu, Huyện Đồng Văn, Tỉnh Hà Giang",
+    "status": "Đã hủy",
+    "paymentMethod": "MoMo",
+    "paymentStatus": "Thanh toán thành công",
+    "paymentMessage": "Thành công.",
+    "createdAt": "2024-12-18T08:13:00.553Z"
   }
 ]
